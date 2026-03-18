@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CtrlZMyBody.API/CtrlZMyBody.API.csproj" Id="7dbc547f-5c50-42ae-a4d0-c082dfc014f3" />
+  <Project Path="CtrlZMyBody.Core/CtrlZMyBody.Core.csproj" Id="0144de02-491d-4990-95e8-c9c0790c842d" />
+  <Project Path="CtrlZMyBody.Repository/CtrlZMyBody.Repository.csproj" Id="10f560cd-14c8-4358-926c-2e61b2c487dd" />
+  <Project Path="CtrlZMyBody.Services/CtrlZMyBody.Services.csproj" Id="1a09a801-d786-46d2-b642-fb09c5ef88f9" />
+</Solution>
