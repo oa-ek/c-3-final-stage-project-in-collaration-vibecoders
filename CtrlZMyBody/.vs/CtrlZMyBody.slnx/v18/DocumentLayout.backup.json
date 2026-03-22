@@ -1,0 +1,292 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\difficultylevels.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\difficultylevels.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\exercises.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\exercises.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\categories.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\categories.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\challenges.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\challenges.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\workoutplans.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\workoutplans.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\injurytypes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\injurytypes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\adminpanel\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\adminpanel\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\controllers\\adminpanelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\controllers\\adminpanelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Users.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Users.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\Users.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Users.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\Users.cshtml",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAgwHYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:44:35.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WorkoutPlans.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\WorkoutPlans.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\WorkoutPlans.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\WorkoutPlans.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\WorkoutPlans.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAgwGMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:42:04.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Exercises.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Exercises.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\Exercises.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Exercises.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\Exercises.cshtml",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAgwHAAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:40:34.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DifficultyLevels.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\DifficultyLevels.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\DifficultyLevels.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\DifficultyLevels.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\DifficultyLevels.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAgwD8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:44:22.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Challenges.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Challenges.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\Challenges.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Challenges.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\Challenges.cshtml",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAgwHEAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:44:16.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Categories.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Categories.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\Categories.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Categories.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\Categories.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAADwvzoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:40:07.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Program.cs",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Program.cs*",
+              "RelativeToolTip": "CtrlZMyBody.API\\Program.cs*",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAgwHcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-22T19:56:23.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\_AdminLayout.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\_AdminLayout.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:40:06.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "InjuryTypes.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\InjuryTypes.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\InjuryTypes.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\InjuryTypes.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\InjuryTypes.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:44:26.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Login.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\AdminPanel\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\AdminPanel\\Login.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\AdminPanel\\Login.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:44:33.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:48:20.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "CtrlZMyBody.API\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-22T20:47:12.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AdminPanelController.cs",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Controllers\\AdminPanelController.cs",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Controllers\\AdminPanelController.cs",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Controllers\\AdminPanelController.cs",
+              "RelativeToolTip": "CtrlZMyBody.API\\Controllers\\AdminPanelController.cs",
+              "ViewState": "AgIAAKQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-22T20:39:58.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "CtrlZMyBody.API\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T20:40:11.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "CtrlZMyBody.API\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAHYBAAAAAAAAAAAgwI0BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-22T20:02:34.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\appsettings.json",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\appsettings.json",
+              "RelativeToolTip": "CtrlZMyBody.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-22T20:18:35.603Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

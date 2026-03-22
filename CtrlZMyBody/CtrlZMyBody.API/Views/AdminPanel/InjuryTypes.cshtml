@@ -1,0 +1,81 @@
+@model List<CtrlZMyBody.Core.Models.InjuryType>
+@{
+    ViewData["Title"] = "Типи травм";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+    var edit    = ViewBag.EditItem as CtrlZMyBody.Core.Models.InjuryType;
+    bool isEdit = edit != null;
+    var chkActive = (edit == null || edit.IsActive) ? "checked" : "";
+}
+
+<div class="page-header">
+    <h2>Типи травм (@Model.Count)</h2>
+    <a href="/admin/injuries" class="btn-add">+ Новий</a>
+</div>
+
+<div class="grid2">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th><th>Назва</th><th>Slug</th>
+                    <th>Частина тіла</th><th>Активна</th><th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.InjuryTypeId</td>
+                        <td>@i.Name</td>
+                        <td><code style="font-size:11px;color:#636e72">@i.Slug</code></td>
+                        <td>@(i.BodyPart ?? "—")</td>
+                        <td><span class="badge @(i.IsActive ? "bg" : "br")">@(i.IsActive ? "Так" : "Ні")</span></td>
+                        <td class="actions">
+                            <a href="/admin/injuries?editId=@i.InjuryTypeId" class="btn-edit">Ред.</a>
+                            <form method="post" action="/admin/injuries/delete/@i.InjuryTypeId" style="display:inline"
+                                  onsubmit="return confirm('Видалити цей тип травми?')">
+                                <button type="submit" class="btn-del">Вид.</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-panel">
+        <h3>@(isEdit ? $"Редагувати #{edit!.InjuryTypeId}" : "Новий тип травми")</h3>
+        <form method="post" action="/admin/injuries/save">
+            <input type="hidden" name="InjuryTypeId" value="@(edit?.InjuryTypeId ?? 0)">
+
+            <div class="form-group">
+                <label>Назва *</label>
+                <input type="text" name="Name" value="@(edit?.Name)" required>
+            </div>
+            <div class="form-group">
+                <label>Slug * (латиниця через дефіс)</label>
+                <input type="text" name="Slug" value="@(edit?.Slug)" required placeholder="knee-ligament">
+            </div>
+            <div class="form-group">
+                <label>Частина тіла</label>
+                <input type="text" name="BodyPart" value="@(edit?.BodyPart)" placeholder="knee / back / shoulder">
+            </div>
+            <div class="form-group">
+                <label>Опис</label>
+                <textarea name="Description">@(edit?.Description)</textarea>
+            </div>
+            <div class="form-group">
+                <label>URL іконки</label>
+                <input type="text" name="IconUrl" value="@(edit?.IconUrl)">
+            </div>
+            <div class="form-group check">
+                <input type="hidden" name="IsActive" value="false">
+                <input type="checkbox" name="IsActive" value="true" id="ia" @chkActive>
+                <label for="ia">Активна</label>
+            </div>
+
+            <button type="submit" class="btn-save">@(isEdit ? "Зберегти зміни" : "Додати")</button>
+            @if (isEdit) { <a href="/admin/injuries" class="cancel-link">Скасувати</a> }
+        </form>
+    </div>
+</div>

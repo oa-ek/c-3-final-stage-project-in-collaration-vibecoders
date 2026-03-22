@@ -1,0 +1,114 @@
+@model List<CtrlZMyBody.Core.Models.Challenge>
+@{
+    ViewData["Title"] = "Челенджі";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+    var edit = ViewBag.EditItem as CtrlZMyBody.Core.Models.Challenge;
+    bool isEdit = edit != null;
+
+    var cType = edit?.Type ?? "weekly";
+    var cMetric = edit?.GoalMetric ?? "exercises_completed";
+}
+<div class="page-header">
+    <h2>Челенджі (@Model.Count)</h2>
+    <a href="/admin/challenges" class="btn-add">+ Новий</a>
+</div>
+<div class="grid2">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Назва</th>
+                    <th>Тип</th>
+                    <th>Ціль</th>
+                    <th>Старт</th>
+                    <th>Кінець</th>
+                    <th>Активний</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.ChallengeId</td>
+                        <td>@c.Title</td>
+                        <td>
+                            <span class="badge @(c.Type == "monthly" ? "bo" : c.Type == "special" ? "bb" : "bg")">
+                                @c.Type
+                            </span>
+                        </td>
+                        <td>@c.GoalValue (@c.GoalMetric)</td>
+                        <td>@c.StartDate.ToString("dd.MM.yy")</td>
+                        <td>@c.EndDate.ToString("dd.MM.yy")</td>
+                        <td><span class="badge @(c.IsActive ? "bg" : "br")">@(c.IsActive ? "Так" : "Ні")</span></td>
+                        <td class="actions">
+                            <a href="/admin/challenges?editId=@c.ChallengeId" class="btn-edit">Ред.</a>
+                            <form method="post" action="/admin/challenges/delete/@(c.ChallengeId)" style="display:inline"
+                                  onsubmit="return confirm('Видалити цей челендж?')">
+                                <button type="submit" class="btn-del">Вид.</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-panel">
+        <h3>@(isEdit ? $"Редагувати #{edit!.ChallengeId}" : "Новий челендж")</h3>
+        <form method="post" action="/admin/challenges/save">
+            <input type="hidden" name="ChallengeId" value="@(edit?.ChallengeId ?? 0)">
+
+            <div class="form-group">
+                <label>Назва *</label>
+                <input type="text" name="Title" value="@(edit?.Title)" required>
+            </div>
+            <div class="form-group">
+                <label>Опис</label>
+                <textarea name="Description">@(edit?.Description)</textarea>
+            </div>
+            <div class="form-group">
+                <label>Тип</label>
+                <select name="Type">
+                    <option value="weekly" selected="@(cType == "weekly")">Тижневий</option>
+                    <option value="monthly" selected="@(cType == "monthly")">Місячний</option>
+                    <option value="special" selected="@(cType == "special")">Особливий</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Метрика цілі</label>
+                <select name="GoalMetric">
+                    <option value="exercises_completed" selected="@(cMetric == "exercises_completed")">Виконано вправ</option>
+                    <option value="streak_days" selected="@(cMetric == "streak_days")">Дні підряд</option>
+                    <option value="checkins_done" selected="@(cMetric == "checkins_done")">Чекіни</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Ціль (число)</label>
+                <input type="number" name="GoalValue" value="@(edit?.GoalValue ?? 10)" min="1" required>
+            </div>
+            <div class="form-group">
+                <label>Дата початку</label>
+                <input type="date" name="StartDate"
+                       value="@(isEdit? edit!.StartDate.ToString("yyyy-MM-dd") : DateTime.Today.ToString("yyyy-MM-dd"))">
+            </div>
+            <div class="form-group">
+                <label>Дата кінця</label>
+                <input type="date" name="EndDate"
+                       value="@(isEdit? edit!.EndDate.ToString("yyyy-MM-dd") : DateTime.Today.AddDays(7).ToString("yyyy-MM-dd"))">
+            </div>
+            <div class="form-group check">
+                <input type="hidden" name="IsActive" value="false">
+                <input type="checkbox" name="IsActive" value="true" id="ca" checked="@(edit == null || edit.IsActive)">
+                <label for="ca">Активний</label>
+            </div>
+
+            <button type="submit" class="btn-save">@(isEdit ? "Зберегти зміни" : "Додати")</button>
+            @if (isEdit)
+            {
+                <a href="/admin/challenges" class="cancel-link">Скасувати</a>
+            }
+        </form>
+    </div>
+</div>

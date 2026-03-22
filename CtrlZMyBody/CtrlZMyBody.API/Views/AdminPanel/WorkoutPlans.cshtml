@@ -1,0 +1,100 @@
+@model List<CtrlZMyBody.Core.Models.WorkoutPlan>
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Плани тренувань";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+    var edit = ViewBag.EditItem as CtrlZMyBody.Core.Models.WorkoutPlan;
+    bool isEdit = edit != null;
+    var injuryTypes = ViewBag.InjuryTypes as List<SelectListItem> ?? new List<SelectListItem>();
+    var difficultyLevels = ViewBag.DifficultyLevels as List<SelectListItem> ?? new List<SelectListItem>();
+}
+<div class="page-header">
+    <h2>Плани тренувань (@Model.Count)</h2>
+    <a href="/admin/plans" class="btn-add">+ Новий</a>
+</div>
+<div class="grid2">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Назва</th>
+                    <th>Травма</th>
+                    <th>Рівень</th>
+                    <th>Днів</th>
+                    <th>Активний</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.PlanId</td>
+                        <td>@p.Title</td>
+                        <td>@(p.InjuryType?.Name ?? "—")</td>
+                        <td>@(p.DifficultyLevel?.Name ?? "—")</td>
+                        <td>@p.TotalDays</td>
+                        <td><span class="badge @(p.IsActive ? "bg" : "br")">@(p.IsActive ? "Так" : "Ні")</span></td>
+                        <td class="actions">
+                            <a href="/admin/plans?editId=@p.PlanId" class="btn-edit">Ред.</a>
+                            <form method="post" action="/admin/plans/delete/@(p.PlanId)" style="display:inline"
+                                  onsubmit="return confirm('Видалити цей план?')">
+                                <button type="submit" class="btn-del">Вид.</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-panel">
+        <h3>@(isEdit ? $"Редагувати #{edit!.PlanId}" : "Новий план")</h3>
+        <form method="post" action="/admin/plans/save">
+            <input type="hidden" name="PlanId" value="@(edit?.PlanId ?? 0)">
+
+            <div class="form-group">
+                <label>Назва *</label>
+                <input type="text" name="Title" value="@(edit?.Title)" required>
+            </div>
+            <div class="form-group">
+                <label>Тип травми *</label>
+                <select name="InjuryTypeId">
+                    @foreach (var i in injuryTypes)
+                    {
+                        <option value="@i.Value" selected="@(isEdit && edit!.InjuryTypeId.ToString() == i.Value)">@i.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Рівень складності *</label>
+                <select name="DifficultyLevelId">
+                    @foreach (var d in difficultyLevels)
+                    {
+                        <option value="@d.Value" selected="@(isEdit && edit!.DifficultyLevelId.ToString() == d.Value)">@d.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Кількість днів</label>
+                <input type="number" name="TotalDays" value="@(edit?.TotalDays ?? 28)" min="1">
+            </div>
+            <div class="form-group">
+                <label>Опис</label>
+                <textarea name="Description">@(edit?.Description)</textarea>
+            </div>
+            <div class="form-group check">
+                <input type="hidden" name="IsActive" value="false">
+                <input type="checkbox" name="IsActive" value="true" id="pa" checked="@(edit == null || edit.IsActive)">
+                <label for="pa">Активний</label>
+            </div>
+
+            <button type="submit" class="btn-save">@(isEdit ? "Зберегти зміни" : "Додати")</button>
+            @if (isEdit)
+            {
+                <a href="/admin/plans" class="cancel-link">Скасувати</a>
+            }
+        </form>
+    </div>
+</div>

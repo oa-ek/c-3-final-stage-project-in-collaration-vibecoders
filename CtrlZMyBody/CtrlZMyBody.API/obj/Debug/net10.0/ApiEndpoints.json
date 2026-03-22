@@ -1,0 +1,793 @@
+[
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "GetChallenges",
+    "RelativePath": "api/Admin/challenges",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "CreateChallenge",
+    "RelativePath": "api/Admin/challenges",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.Challenge",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "UpdateChallenge",
+    "RelativePath": "api/Admin/challenges/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.Challenge",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "DeleteChallenge",
+    "RelativePath": "api/Admin/challenges/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "GetDifficultyLevels",
+    "RelativePath": "api/Admin/difficulty-levels",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "CreateDifficultyLevel",
+    "RelativePath": "api/Admin/difficulty-levels",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.DifficultyLevel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "UpdateDifficultyLevel",
+    "RelativePath": "api/Admin/difficulty-levels/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.DifficultyLevel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "DeleteDifficultyLevel",
+    "RelativePath": "api/Admin/difficulty-levels/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "GetExerciseCategories",
+    "RelativePath": "api/Admin/exercise-categories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "CreateExerciseCategory",
+    "RelativePath": "api/Admin/exercise-categories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.ExerciseCategory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "UpdateExerciseCategory",
+    "RelativePath": "api/Admin/exercise-categories/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.ExerciseCategory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "DeleteExerciseCategory",
+    "RelativePath": "api/Admin/exercise-categories/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "GetExercises",
+    "RelativePath": "api/Admin/exercises",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "CreateExercise",
+    "RelativePath": "api/Admin/exercises",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.Exercise",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "UpdateExercise",
+    "RelativePath": "api/Admin/exercises/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.Exercise",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "DeleteExercise",
+    "RelativePath": "api/Admin/exercises/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "GetInjuryTypes",
+    "RelativePath": "api/Admin/injury-types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "CreateInjuryType",
+    "RelativePath": "api/Admin/injury-types",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.InjuryType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "UpdateInjuryType",
+    "RelativePath": "api/Admin/injury-types/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.InjuryType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "DeleteInjuryType",
+    "RelativePath": "api/Admin/injury-types/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Admin/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "CreateUser",
+    "RelativePath": "api/Admin/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.AdminCreateUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/Admin/users/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.AdminUpdateUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/Admin/users/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "GetWorkoutPlans",
+    "RelativePath": "api/Admin/workout-plans",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "CreateWorkoutPlan",
+    "RelativePath": "api/Admin/workout-plans",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.WorkoutPlan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "UpdateWorkoutPlan",
+    "RelativePath": "api/Admin/workout-plans/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.Core.Models.WorkoutPlan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AdminController",
+    "Method": "DeleteWorkoutPlan",
+    "RelativePath": "api/Admin/workout-plans/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.RegisterRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.ChallengeController",
+    "Method": "Join",
+    "RelativePath": "api/Challenge/{challengeId}/join",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "challengeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.ChallengeController",
+    "Method": "GetLeaderboard",
+    "RelativePath": "api/Challenge/{challengeId}/leaderboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "challengeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.ChallengeController",
+    "Method": "GetActive",
+    "RelativePath": "api/Challenge/active",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.ChallengeController",
+    "Method": "GetMyChallenges",
+    "RelativePath": "api/Challenge/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.CheckInController",
+    "Method": "Create",
+    "RelativePath": "api/CheckIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.CreateCheckInRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.CheckInController",
+    "Method": "GetHistory",
+    "RelativePath": "api/CheckIn/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.CheckInController",
+    "Method": "GetRange",
+    "RelativePath": "api/CheckIn/range",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "from",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "to",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.CheckInController",
+    "Method": "GetToday",
+    "RelativePath": "api/CheckIn/today",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.ConsultationController",
+    "Method": "Create",
+    "RelativePath": "api/Consultation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.CreateConsultationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.ConsultationController",
+    "Method": "Respond",
+    "RelativePath": "api/Consultation/{id}/respond",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.RespondRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.ConsultationController",
+    "Method": "GetMy",
+    "RelativePath": "api/Consultation/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.ConsultationController",
+    "Method": "GetPending",
+    "RelativePath": "api/Consultation/pending",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.NotificationController",
+    "Method": "GetAll",
+    "RelativePath": "api/Notification",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.NotificationController",
+    "Method": "MarkAsRead",
+    "RelativePath": "api/Notification/{id}/read",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.NotificationController",
+    "Method": "GetUnread",
+    "RelativePath": "api/Notification/unread",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.WorkoutController",
+    "Method": "GetDay",
+    "RelativePath": "api/Workout/day/{planDayId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "planDayId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.WorkoutController",
+    "Method": "GetHistory",
+    "RelativePath": "api/Workout/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.WorkoutController",
+    "Method": "GetPlan",
+    "RelativePath": "api/Workout/plan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "injuryTypeId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "difficultyLevelId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.WorkoutController",
+    "Method": "GetSession",
+    "RelativePath": "api/Workout/session/{sessionId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.WorkoutController",
+    "Method": "CompleteExercise",
+    "RelativePath": "api/Workout/session/{sessionId}/complete-exercise",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.CompleteExerciseRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.WorkoutController",
+    "Method": "FinishSession",
+    "RelativePath": "api/Workout/session/{sessionId}/finish",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CtrlZMyBody.API.Controllers.WorkoutController",
+    "Method": "StartSession",
+    "RelativePath": "api/Workout/session/start",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "CtrlZMyBody.API.Controllers.StartSessionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

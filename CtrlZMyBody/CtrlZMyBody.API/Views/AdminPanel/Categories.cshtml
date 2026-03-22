@@ -1,0 +1,59 @@
+@model List<CtrlZMyBody.Core.Models.ExerciseCategory>
+@{
+    ViewData["Title"] = "Категорії вправ";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+    var edit = ViewBag.EditItem as CtrlZMyBody.Core.Models.ExerciseCategory;
+    bool isEdit = edit != null;
+}
+
+<div class="page-header">
+    <h2>Категорії вправ (@Model.Count)</h2>
+    <a href="/admin/categories" class="btn-add">+ Нова</a>
+</div>
+
+<div class="grid2">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>ID</th><th>Назва</th><th>Опис</th><th></th></tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.CategoryId</td>
+                        <td>@c.Name</td>
+                        <td>@(c.Description ?? "—")</td>
+                        <td class="actions">
+                            <a href="/admin/categories?editId=@c.CategoryId" class="btn-edit">Ред.</a>
+                            <form method="post" action="/admin/categories/delete/@(c.CategoryId)" style="display:inline"
+                                  onsubmit="return confirm('Видалити &quot;@c.Name&quot;?')">
+                                <button type="submit" class="btn-del">Вид.</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-panel">
+        <h3>@(isEdit ? $"Редагувати #{edit!.CategoryId}" : "Нова категорія")</h3>
+        <form method="post" action="/admin/categories/save">
+            <input type="hidden" name="CategoryId" value="@(edit?.CategoryId ?? 0)">
+            <div class="form-group">
+                <label>Назва *</label>
+                <input type="text" name="Name" value="@(edit?.Name)" required>
+            </div>
+            <div class="form-group">
+                <label>Опис</label>
+                <textarea name="Description">@(edit?.Description)</textarea>
+            </div>
+            <button type="submit" class="btn-save">@(isEdit ? "Зберегти зміни" : "Додати")</button>
+            @if (isEdit)
+            {
+                <a href="/admin/categories" class="cancel-link">Скасувати</a>
+            }
+        </form>
+    </div>
+</div>  
