@@ -1,0 +1,64 @@
+@model List<CtrlZMyBody.Core.Models.DifficultyLevel>
+@{
+    ViewData["Title"] = "Рівні складності";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+    var edit = ViewBag.EditItem as CtrlZMyBody.Core.Models.DifficultyLevel;
+    bool isEdit = edit != null;
+}
+<div class="page-header">
+    <h2>Рівні складності (@Model.Count)</h2>
+    <a href="/admin/difficulties" class="btn-add">+ Новий</a>
+</div>
+<div class="grid2">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>ID</th><th>Назва</th><th>Slug</th><th>Порядок</th><th></th></tr>
+            </thead>
+            <tbody>
+                @foreach (var d in Model)
+                {
+                    <tr>
+                        <td>@d.DifficultyLevelId</td>
+                        <td>@d.Name</td>
+                        <td><code style="font-size:11px;color:#636e72">@d.Slug</code></td>
+                        <td>@d.OrderIndex</td>
+                        <td class="actions">
+                            <a href="/admin/difficulties?editId=@d.DifficultyLevelId" class="btn-edit">Ред.</a>
+                            <form method="post" action="/admin/difficulties/delete/@(d.DifficultyLevelId)" style="display:inline"
+                                  onsubmit="return confirm('Видалити &quot;@d.Name&quot;?')">
+                                <button type="submit" class="btn-del">Вид.</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-panel">
+        <h3>@(isEdit ? $"Редагувати #{edit!.DifficultyLevelId}" : "Новий рівень")</h3>
+        <form method="post" action="/admin/difficulties/save">
+            <input type="hidden" name="DifficultyLevelId" value="@(edit?.DifficultyLevelId ?? 0)">
+
+            <div class="form-group">
+                <label>Назва *</label>
+                <input type="text" name="Name" value="@(edit?.Name)" required>
+            </div>
+            <div class="form-group">
+                <label>Slug * (латиниця)</label>
+                <input type="text" name="Slug" value="@(edit?.Slug)" required placeholder="beginner">
+            </div>
+            <div class="form-group">
+                <label>Порядок відображення</label>
+                <input type="number" name="OrderIndex" value="@(edit?.OrderIndex ?? 1)" min="1">
+            </div>
+
+            <button type="submit" class="btn-save">@(isEdit ? "Зберегти зміни" : "Додати")</button>
+            @if (isEdit)
+            {
+                <a href="/admin/difficulties" class="cancel-link">Скасувати</a>
+            }
+        </form>
+    </div>
+</div>

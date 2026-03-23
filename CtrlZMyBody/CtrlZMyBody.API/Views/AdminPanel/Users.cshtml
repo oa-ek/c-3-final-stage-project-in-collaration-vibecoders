@@ -1,0 +1,119 @@
+@model List<CtrlZMyBody.Core.Models.User>
+@{
+    ViewData["Title"] = "Користувачі";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+    var edit = ViewBag.EditItem as CtrlZMyBody.Core.Models.User;
+    bool isEdit = edit != null;
+
+    var role = edit?.Role ?? "user";
+}
+<div class="page-header">
+    <h2>Користувачі (@Model.Count)</h2>
+    <a href="/admin/users" class="btn-add">+ Новий</a>
+</div>
+<div class="grid2">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Ім'я</th>
+                    <th>Роль</th>
+                    <th>Статус</th>
+                    <th>Створено</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var u in Model)
+                {
+                    <tr>
+                        <td>@u.UserId</td>
+                        <td>@u.Email</td>
+                        <td>@u.FirstName @u.LastName</td>
+                        <td>
+                            <span class="badge @(u.Role == "admin" ? "bo" : u.Role == "specialist" ? "bb" : "bg")">
+                                @u.Role
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge @(u.IsActive ? "bg" : "br")">
+                                @(u.IsActive ? "Активний" : "Заблокований")
+                            </span>
+                        </td>
+                        <td>@u.CreatedAt.ToString("dd.MM.yy")</td>
+                        <td class="actions">
+                            <a href="/admin/users?editId=@u.UserId" class="btn-edit">Ред.</a>
+                            <form method="post" action="/admin/users/delete/@(u.UserId)" style="display:inline"
+                                  onsubmit="return confirm('Видалити запис?')">
+                                <button type="submit" class="btn-del">Вид.</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-panel">
+        <h3>@(isEdit ? $"Редагувати #{edit!.UserId}" : "Новий користувач")</h3>
+        <form method="post" action="/admin/users/save">
+            <input type="hidden" name="UserId" value="@(edit?.UserId ?? 0)">
+
+            <div class="form-group">
+                <label>Email *</label>
+                @if (isEdit)
+                {
+                    <input type="email" name="Email" value="@edit!.Email" readonly style="background:#f5f6fa">
+                }
+                else
+                {
+                    <input type="email" name="Email" required>
+                }
+            </div>
+            <div class="form-group">
+                <label>Ім'я *</label>
+                <input type="text" name="FirstName" value="@(edit?.FirstName)" required>
+            </div>
+            <div class="form-group">
+                <label>Прізвище *</label>
+                <input type="text" name="LastName" value="@(edit?.LastName)" required>
+            </div>
+            <div class="form-group">
+                <label>Телефон</label>
+                <input type="text" name="Phone" value="@(edit?.Phone)">
+            </div>
+            <div class="form-group">
+                <label>Роль</label>
+                <select name="Role">
+                    <option value="user" selected="@(role == "user")">Користувач</option>
+                    <option value="specialist" selected="@(role == "specialist")">Спеціаліст</option>
+                    <option value="admin" selected="@(role == "admin")">Адмін</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>@(isEdit ? "Новий пароль (залиш пустим — не зміниться)" : "Пароль *")</label>
+                @if (isEdit)
+                {
+                    <input type="password" name="Password" placeholder="••••••••">
+                }
+                else
+                {
+                    <input type="password" name="Password" required placeholder="••••••••">
+                }
+            </div>
+            <div class="form-group check">
+                <input type="hidden" name="IsActive" value="false">
+                <input type="checkbox" name="IsActive" value="true" id="ua" checked="@(edit == null || edit.IsActive)">
+                <label for="ua">Активний</label>
+            </div>
+
+            <button type="submit" class="btn-save">@(isEdit ? "Зберегти зміни" : "Додати")</button>
+            @if (isEdit)
+            {
+                <a href="/admin/users" class="cancel-link">Скасувати</a>
+            }
+        </form>
+    </div>
+</div>

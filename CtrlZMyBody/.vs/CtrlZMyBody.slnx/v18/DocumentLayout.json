@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|c:\\users\\karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\ctrlzmybody\\ctrlzmybody.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7DBC547F-5C50-42AE-A4D0-C082DFC014F3}|CtrlZMyBody.API\\CtrlZMyBody.API.csproj|solutionrelative:ctrlzmybody.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\appsettings.json",
+              "RelativeDocumentMoniker": "CtrlZMyBody.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.API\\appsettings.json",
+              "RelativeToolTip": "CtrlZMyBody.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-22T21:22:36.24Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

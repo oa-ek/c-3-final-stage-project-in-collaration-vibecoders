@@ -1,0 +1,117 @@
+@model List<CtrlZMyBody.Core.Models.Exercise>
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Вправи";
+    Layout = "~/Views/AdminPanel/_AdminLayout.cshtml";
+    var edit = ViewBag.EditItem as CtrlZMyBody.Core.Models.Exercise;
+    bool isEdit = edit != null;
+    var categories = ViewBag.Categories as List<SelectListItem> ?? new List<SelectListItem>();
+
+    var diff = edit?.Difficulty ?? "beginner";
+}
+<div class="page-header">
+    <h2>Вправи (@Model.Count)</h2>
+    <a href="/admin/exercises" class="btn-add">+ Нова</a>
+</div>
+<div class="grid2">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Назва</th>
+                    <th>Категорія</th>
+                    <th>Склад.</th>
+                    <th>П/П/С</th>
+                    <th>Активна</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in Model)
+                {
+                    <tr>
+                        <td>@e.ExerciseId</td>
+                        <td>@e.Title</td>
+                        <td>@(e.Category?.Name ?? "—")</td>
+                        <td>@e.Difficulty</td>
+                        <td>@e.DefaultSets / @e.DefaultReps / @e.DefaultDurationSec с</td>
+                        <td><span class="badge @(e.IsActive ? "bg" : "br")">@(e.IsActive ? "Так" : "Ні")</span></td>
+                        <td class="actions">
+                            <a href="/admin/exercises?editId=@e.ExerciseId" class="btn-edit">Ред.</a>
+                            <form method="post" action="/admin/exercises/delete/@(e.ExerciseId)" style="display:inline"
+                                  onsubmit="return confirm('Видалити цю вправу?')">
+                                <button type="submit" class="btn-del">Вид.</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-panel">
+        <h3>@(isEdit ? $"Редагувати #{edit!.ExerciseId}" : "Нова вправа")</h3>
+        <form method="post" action="/admin/exercises/save">
+            <input type="hidden" name="ExerciseId" value="@(edit?.ExerciseId ?? 0)">
+
+            <div class="form-group">
+                <label>Назва *</label>
+                <input type="text" name="Title" value="@(edit?.Title)" required>
+            </div>
+            <div class="form-group">
+                <label>Опис</label>
+                <textarea name="Description">@(edit?.Description)</textarea>
+            </div>
+            <div class="form-group">
+                <label>Категорія</label>
+                <select name="CategoryId">
+                    <option value="0" selected="@(edit?.CategoryId == null)">— без категорії —</option>
+                    @foreach (var c in categories)
+                    {
+                        <option value="@c.Value" selected="@(isEdit && edit!.CategoryId?.ToString() == c.Value)">@c.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Складність</label>
+                <select name="Difficulty">
+                    <option value="beginner" selected="@(diff == "beginner")">Початківець</option>
+                    <option value="intermediate" selected="@(diff == "intermediate")">Середній</option>
+                    <option value="advanced" selected="@(diff == "advanced")">Складний</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Підходи</label>
+                <input type="number" name="DefaultSets" value="@(edit?.DefaultSets ?? 3)" min="1">
+            </div>
+            <div class="form-group">
+                <label>Повтори</label>
+                <input type="number" name="DefaultReps" value="@(edit?.DefaultReps ?? 10)" min="1">
+            </div>
+            <div class="form-group">
+                <label>Тривалість (секунд)</label>
+                <input type="number" name="DefaultDurationSec" value="@(edit?.DefaultDurationSec ?? 30)" min="1">
+            </div>
+            <div class="form-group">
+                <label>URL відео</label>
+                <input type="text" name="VideoUrl" value="@(edit?.VideoUrl)">
+            </div>
+            <div class="form-group">
+                <label>URL фото</label>
+                <input type="text" name="PhotoUrl" value="@(edit?.PhotoUrl)">
+            </div>
+            <div class="form-group check">
+                <input type="hidden" name="IsActive" value="false">
+                <input type="checkbox" name="IsActive" value="true" id="ea" checked="@(edit == null || edit.IsActive)">
+                <label for="ea">Активна</label>
+            </div>
+
+            <button type="submit" class="btn-save">@(isEdit ? "Зберегти зміни" : "Додати")</button>
+            @if (isEdit)
+            {
+                <a href="/admin/exercises" class="cancel-link">Скасувати</a>
+            }
+        </form>
+    </div>
+</div>
