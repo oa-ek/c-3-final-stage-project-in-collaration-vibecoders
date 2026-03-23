@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CtrlZMyBody.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bd2e4450878e174896678f42825d6bd96cb3ff3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c7f67907988f25499c70a5d28a524e40d1b294c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("CtrlZMyBody.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CtrlZMyBody.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

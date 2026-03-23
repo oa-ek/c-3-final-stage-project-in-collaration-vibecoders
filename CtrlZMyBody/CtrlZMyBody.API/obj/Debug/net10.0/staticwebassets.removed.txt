@@ -60,4 +60,3 @@ C:\Users\Karasu\source\repos\c-3-final-stage-project-in-collaration-vibecoders\C
 C:\Users\Karasu\source\repos\c-3-final-stage-project-in-collaration-vibecoders\CtrlZMyBody\CtrlZMyBody.API\wwwroot\lib\jquery\LICENSE.txt
 C:\Users\Karasu\source\repos\c-3-final-stage-project-in-collaration-vibecoders\CtrlZMyBody\CtrlZMyBody.API\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 C:\Users\Karasu\source\repos\c-3-final-stage-project-in-collaration-vibecoders\CtrlZMyBody\CtrlZMyBody.API\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
-C:\Users\Karasu\source\repos\c-3-final-stage-project-in-collaration-vibecoders\CtrlZMyBody\CtrlZMyBody.API\wwwroot\lib\bootstrap\LICENSE
