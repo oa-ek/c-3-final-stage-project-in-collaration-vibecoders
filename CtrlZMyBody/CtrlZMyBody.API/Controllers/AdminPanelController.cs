@@ -1,4 +1,4 @@
-using CtrlZMyBody.Core.Context;
+﻿using CtrlZMyBody.Core.Context;
 using CtrlZMyBody.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -515,3 +515,4 @@ namespace CtrlZMyBody.API.Controllers
         public bool     IsActive     { get; set; } = true;
     }
 }
+

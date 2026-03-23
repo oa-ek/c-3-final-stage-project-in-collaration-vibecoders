@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CtrlZMyBody.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bd2e4450878e174896678f42825d6bd96cb3ff3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c885cca2874ba2679a9865ffea0f3caaead62ae2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CtrlZMyBody.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CtrlZMyBody.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

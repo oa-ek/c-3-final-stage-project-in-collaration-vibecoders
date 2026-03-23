@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CtrlZMyBody.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a02693317e0c53f018687c6641ace2b9e90ba149")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c885cca2874ba2679a9865ffea0f3caaead62ae2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CtrlZMyBody.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CtrlZMyBody.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

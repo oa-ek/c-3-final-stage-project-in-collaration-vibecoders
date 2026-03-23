@@ -716,23 +716,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Karasu\\.nuget\\packages\\": {},
+    "C:\\Users\\hp\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Repository\\CtrlZMyBody.Repository.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\oa-ek\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Repository\\CtrlZMyBody.Repository.csproj",
       "projectName": "CtrlZMyBody.Repository",
-      "projectPath": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Repository\\CtrlZMyBody.Repository.csproj",
-      "packagesPath": "C:\\Users\\Karasu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Repository\\obj\\",
+      "projectPath": "C:\\Users\\hp\\source\\repos\\oa-ek\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Repository\\CtrlZMyBody.Repository.csproj",
+      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hp\\source\\repos\\oa-ek\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Karasu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -741,14 +741,16 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Core\\CtrlZMyBody.Core.csproj": {
-              "projectPath": "C:\\Users\\Karasu\\source\\repos\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Core\\CtrlZMyBody.Core.csproj"
+            "C:\\Users\\hp\\source\\repos\\oa-ek\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Core\\CtrlZMyBody.Core.csproj": {
+              "projectPath": "C:\\Users\\hp\\source\\repos\\oa-ek\\c-3-final-stage-project-in-collaration-vibecoders\\CtrlZMyBody\\CtrlZMyBody.Core\\CtrlZMyBody.Core.csproj"
             }
           }
         }
@@ -767,6 +769,7 @@
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
