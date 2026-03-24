@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CtrlZMyBody.Core.Models
@@ -14,8 +14,6 @@ namespace CtrlZMyBody.Core.Models
         public string Title { get; set; } = string.Empty;
 
         public string? Description { get; set; }
-
-        // "weekly" | "monthly" | "special"
         [Required]
         [MaxLength(20)]
         public string Type { get; set; } = "weekly";
@@ -28,8 +26,6 @@ namespace CtrlZMyBody.Core.Models
 
         [Required]
         public int GoalValue { get; set; }
-
-        // "exercises_completed" | "streak_days" | "checkins_done"
         [Required]
         [MaxLength(50)]
         public string GoalMetric { get; set; } = "exercises_completed";
@@ -83,8 +79,6 @@ namespace CtrlZMyBody.Core.Models
 
         [Required]
         public int Amount { get; set; }
-
-        // "session_completed" | "challenge_completed" | "checkin_done" | "streak_bonus"
         [Required]
         [MaxLength(50)]
         public string SourceType { get; set; } = string.Empty;
@@ -108,8 +102,6 @@ namespace CtrlZMyBody.Core.Models
         public int UserId { get; set; }
 
         public int? SpecialistId { get; set; }
-
-        // "pending" | "in_progress" | "completed" | "cancelled"
         [Required]
         [MaxLength(20)]
         public string Status { get; set; } = "pending";
@@ -140,8 +132,6 @@ namespace CtrlZMyBody.Core.Models
 
         [Required]
         public int UserId { get; set; }
-
-        // "workout_reminder" | "sleep_reminder" | "nutrition_reminder"
         [Required]
         [MaxLength(50)]
         public string Type { get; set; } = string.Empty;
@@ -151,8 +141,6 @@ namespace CtrlZMyBody.Core.Models
         public string Title { get; set; } = string.Empty;
 
         public string? Body { get; set; }
-
-        // "push" | "email"
         [Required]
         [MaxLength(20)]
         public string Channel { get; set; } = "push";

@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using CtrlZMyBody.Services.Interfaces;
@@ -16,16 +16,12 @@ namespace CtrlZMyBody.API.Controllers
 
         public ChallengeController(IChallengeService challengeService) =>
             _challengeService = challengeService;
-
-        // GET api/challenge/active
         [HttpGet("active")]
         public async Task<IActionResult> GetActive()
         {
             var challenges = await _challengeService.GetActiveChallengesAsync();
             return Ok(challenges);
         }
-
-        // POST api/challenge/{challengeId}/join
         [HttpPost("{challengeId}/join")]
         public async Task<IActionResult> Join(int challengeId)
         {
@@ -39,16 +35,12 @@ namespace CtrlZMyBody.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
-
-        // GET api/challenge/my
         [HttpGet("my")]
         public async Task<IActionResult> GetMyChallenges()
         {
             var challenges = await _challengeService.GetUserChallengesAsync(CurrentUserId);
             return Ok(challenges);
         }
-
-        // GET api/challenge/{challengeId}/leaderboard
         [HttpGet("{challengeId}/leaderboard")]
         public async Task<IActionResult> GetLeaderboard(int challengeId)
         {

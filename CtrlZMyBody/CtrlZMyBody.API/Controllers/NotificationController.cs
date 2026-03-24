@@ -1,4 +1,4 @@
-﻿using CtrlZMyBody.Services.Interfaces;
+using CtrlZMyBody.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -18,24 +18,18 @@ namespace CtrlZMyBody.API.Controllers
 
         public NotificationController(INotificationService notificationService) =>
             _notificationService = notificationService;
-
-        // GET api/notification
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var list = await _notificationService.GetUserNotificationsAsync(CurrentUserId);
             return Ok(list);
         }
-
-        // GET api/notification/unread
         [HttpGet("unread")]
         public async Task<IActionResult> GetUnread()
         {
             var list = await _notificationService.GetUnreadAsync(CurrentUserId);
             return Ok(list);
         }
-
-        // POST api/notification/{id}/read
         [HttpPost("{id}/read")]
         public async Task<IActionResult> MarkAsRead(int id)
         {

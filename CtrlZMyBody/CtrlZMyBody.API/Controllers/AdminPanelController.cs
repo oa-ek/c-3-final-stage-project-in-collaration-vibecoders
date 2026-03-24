@@ -1,4 +1,4 @@
-﻿using CtrlZMyBody.Core.Context;
+using CtrlZMyBody.Core.Context;
 using CtrlZMyBody.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,10 +16,6 @@ namespace CtrlZMyBody.API.Controllers
 
         private IActionResult? CheckLogin()
             => IsLoggedIn ? null : Redirect("/admin/login");
-
-        // ══════════════════════════════════════════════════════════════
-        //  ЛОГІН / ВИХІД
-        // ══════════════════════════════════════════════════════════════
 
         [HttpGet("login")]
         public IActionResult Login()
@@ -49,10 +45,6 @@ namespace CtrlZMyBody.API.Controllers
             HttpContext.Session.Clear();
             return Redirect("/admin/login");
         }
-
-        // ══════════════════════════════════════════════════════════════
-        //  КОРИСТУВАЧІ
-        // ══════════════════════════════════════════════════════════════
 
         [HttpGet("users")]
         public async Task<IActionResult> Users(int? editId)
@@ -116,10 +108,6 @@ namespace CtrlZMyBody.API.Controllers
             return Redirect("/admin/users");
         }
 
-        // ══════════════════════════════════════════════════════════════
-        //  КАТЕГОРІЇ ВПРАВ
-        // ══════════════════════════════════════════════════════════════
-
         [HttpGet("categories")]
         public async Task<IActionResult> Categories(int? editId)
         {
@@ -156,10 +144,6 @@ namespace CtrlZMyBody.API.Controllers
             TempData["Success"] = "Видалено";
             return Redirect("/admin/categories");
         }
-
-        // ══════════════════════════════════════════════════════════════
-        //  ВПРАВИ
-        // ══════════════════════════════════════════════════════════════
 
         [HttpGet("exercises")]
         public async Task<IActionResult> Exercises(int? editId)
@@ -224,10 +208,6 @@ namespace CtrlZMyBody.API.Controllers
             return Redirect("/admin/exercises");
         }
 
-        // ══════════════════════════════════════════════════════════════
-        //  ТИПИ ТРАВМ
-        // ══════════════════════════════════════════════════════════════
-
         [HttpGet("injuries")]
         public async Task<IActionResult> InjuryTypes(int? editId)
         {
@@ -280,10 +260,6 @@ namespace CtrlZMyBody.API.Controllers
             return Redirect("/admin/injuries");
         }
 
-        // ══════════════════════════════════════════════════════════════
-        //  РІВНІ СКЛАДНОСТІ
-        // ══════════════════════════════════════════════════════════════
-
         [HttpGet("difficulties")]
         public async Task<IActionResult> DifficultyLevels(int? editId)
         {
@@ -322,10 +298,6 @@ namespace CtrlZMyBody.API.Controllers
             TempData["Success"] = "Видалено";
             return Redirect("/admin/difficulties");
         }
-
-        // ══════════════════════════════════════════════════════════════
-        //  ПЛАНИ ТРЕНУВАНЬ
-        // ══════════════════════════════════════════════════════════════
 
         [HttpGet("plans")]
         public async Task<IActionResult> WorkoutPlans(int? editId)
@@ -390,10 +362,6 @@ namespace CtrlZMyBody.API.Controllers
             return Redirect("/admin/plans");
         }
 
-        // ══════════════════════════════════════════════════════════════
-        //  ЧЕЛЕНДЖІ
-        // ══════════════════════════════════════════════════════════════
-
         [HttpGet("challenges")]
         public async Task<IActionResult> Challenges(int? editId)
         {
@@ -448,10 +416,6 @@ namespace CtrlZMyBody.API.Controllers
             return Redirect("/admin/challenges");
         }
     }
-
-    // ══════════════════════════════════════════════════════════════════════
-    //  FORM MODELS
-    // ══════════════════════════════════════════════════════════════════════
 
     public class UserFormModel
     {

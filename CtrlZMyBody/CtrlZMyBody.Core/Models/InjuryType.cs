@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CtrlZMyBody.Core.Models
@@ -27,8 +27,6 @@ namespace CtrlZMyBody.Core.Models
 
         [Required]
         public bool IsActive { get; set; } = true;
-
-        // Navigation
         public virtual ICollection<UserInjuryProfile> UserProfiles { get; set; } = [];
         public virtual ICollection<WorkoutPlan> WorkoutPlans { get; set; } = [];
     }

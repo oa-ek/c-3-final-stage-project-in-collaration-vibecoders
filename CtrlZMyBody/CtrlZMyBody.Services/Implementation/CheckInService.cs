@@ -1,4 +1,4 @@
-﻿using CtrlZMyBody.Core.Models;
+using CtrlZMyBody.Core.Models;
 using CtrlZMyBody.Repository.Interfaces;
 using CtrlZMyBody.Services.Interfaces;
 
@@ -13,7 +13,6 @@ namespace CtrlZMyBody.Services.Implementation
         public async Task<DailyCheckIn> CreateCheckInAsync(int userId, int painLevel,
             string? mood, string? comment, string? photoBeforeUrl, string? photoAfterUrl)
         {
-            // Не більше одного чекіну на день
             var existing = await _repo.GetTodayCheckInAsync(userId);
             if (existing != null)
             {

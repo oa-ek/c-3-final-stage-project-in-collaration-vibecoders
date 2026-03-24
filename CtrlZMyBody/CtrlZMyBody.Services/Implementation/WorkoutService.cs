@@ -1,4 +1,4 @@
-﻿using CtrlZMyBody.Core.Models;
+using CtrlZMyBody.Core.Models;
 using CtrlZMyBody.Repository.Interfaces;
 using CtrlZMyBody.Services.Interfaces;
 
@@ -45,8 +45,6 @@ namespace CtrlZMyBody.Services.Implementation
         {
             var session = await _sessionRepo.GetSessionWithLogsAsync(sessionId)
                 ?? throw new Exception("Сесію не знайдено.");
-
-            // Перевіряємо чи вправа вже залогована
             var existingLog = session.ExerciseLogs.FirstOrDefault(l => l.ExerciseId == exerciseId);
             if (existingLog != null)
             {

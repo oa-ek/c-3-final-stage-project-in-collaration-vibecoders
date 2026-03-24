@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CtrlZMyBody.Core.Models
@@ -18,8 +18,6 @@ namespace CtrlZMyBody.Core.Models
         [Required]
         [Range(1, 10)]
         public int PainLevel { get; set; }
-
-        // "great" | "good" | "okay" | "bad" | "terrible"
         [MaxLength(20)]
         public string? Mood { get; set; }
 

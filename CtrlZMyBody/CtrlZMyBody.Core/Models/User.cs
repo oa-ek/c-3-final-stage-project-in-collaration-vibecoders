@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CtrlZMyBody.Core.Models
@@ -30,8 +30,6 @@ namespace CtrlZMyBody.Core.Models
 
         [MaxLength(500)]
         public string? AvatarUrl { get; set; }
-
-        // "user" | "specialist" | "admin"
         [Required]
         [MaxLength(20)]
         public string Role { get; set; } = "user";
@@ -52,8 +50,6 @@ namespace CtrlZMyBody.Core.Models
 
         [NotMapped]
         public string FullName => $"{FirstName} {LastName}";
-
-        // Navigation
         public virtual ICollection<UserInjuryProfile> InjuryProfiles { get; set; } = [];
         public virtual ICollection<DailyCheckIn> DailyCheckIns { get; set; } = [];
         public virtual ICollection<UserWorkoutSession> WorkoutSessions { get; set; } = [];

@@ -1,4 +1,4 @@
-﻿using CtrlZMyBody.Core.Context;
+using CtrlZMyBody.Core.Context;
 using CtrlZMyBody.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +13,6 @@ namespace CtrlZMyBody.API.Controllers
     {
         private readonly AppDbContext _db;
         public AdminController(AppDbContext db) => _db = db;
-
-        // ─── USERS ─────────────────────────────────────────────────────────────
 
         [HttpGet("users")]
         public async Task<IActionResult> GetUsers()
@@ -88,8 +86,6 @@ namespace CtrlZMyBody.API.Controllers
             return Ok(new { message = "Видалено" });
         }
 
-        // ─── EXERCISE CATEGORIES ───────────────────────────────────────────────
-
         [HttpGet("exercise-categories")]
         public async Task<IActionResult> GetExerciseCategories()
         {
@@ -126,8 +122,6 @@ namespace CtrlZMyBody.API.Controllers
             await _db.SaveChangesAsync();
             return Ok(new { message = "Видалено" });
         }
-
-        // ─── EXERCISES ─────────────────────────────────────────────────────────
 
         [HttpGet("exercises")]
         public async Task<IActionResult> GetExercises()
@@ -190,8 +184,6 @@ namespace CtrlZMyBody.API.Controllers
             return Ok(new { message = "Видалено" });
         }
 
-        // ─── INJURY TYPES ──────────────────────────────────────────────────────
-
         [HttpGet("injury-types")]
         public async Task<IActionResult> GetInjuryTypes()
         {
@@ -233,8 +225,6 @@ namespace CtrlZMyBody.API.Controllers
             return Ok(new { message = "Видалено" });
         }
 
-        // ─── DIFFICULTY LEVELS ─────────────────────────────────────────────────
-
         [HttpGet("difficulty-levels")]
         public async Task<IActionResult> GetDifficultyLevels()
         {
@@ -272,8 +262,6 @@ namespace CtrlZMyBody.API.Controllers
             await _db.SaveChangesAsync();
             return Ok(new { message = "Видалено" });
         }
-
-        // ─── WORKOUT PLANS ─────────────────────────────────────────────────────
 
         [HttpGet("workout-plans")]
         public async Task<IActionResult> GetWorkoutPlans()
@@ -330,8 +318,6 @@ namespace CtrlZMyBody.API.Controllers
             return Ok(new { message = "Видалено" });
         }
 
-        // ─── CHALLENGES ────────────────────────────────────────────────────────
-
         [HttpGet("challenges")]
         public async Task<IActionResult> GetChallenges()
         {
@@ -375,8 +361,6 @@ namespace CtrlZMyBody.API.Controllers
             return Ok(new { message = "Видалено" });
         }
     }
-
-    // ─── REQUEST MODELS ────────────────────────────────────────────────────────
 
     public record AdminCreateUserRequest(
         string Email,
