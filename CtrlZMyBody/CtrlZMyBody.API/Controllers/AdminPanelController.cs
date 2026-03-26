@@ -1,4 +1,4 @@
-using CtrlZMyBody.Core.Context;
+﻿using CtrlZMyBody.Core.Context;
 using CtrlZMyBody.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,34 +9,66 @@ namespace CtrlZMyBody.API.Controllers
     [Route("admin")]
     public class AdminPanelController : Controller
     {
+        private const string RequiredDomain = "@ctrlz.com";
         private readonly AppDbContext _db;
         public AdminPanelController(AppDbContext db) => _db = db;
 
-        private bool IsLoggedIn => HttpContext.Session.GetInt32("AdminId") != null;
+        private bool IsLoggedIn =>
+            HttpContext.Session.GetInt32("AdminId") != null &&
+            string.Equals(HttpContext.Session.GetString("AdminRole"), "admin", StringComparison.OrdinalIgnoreCase);
 
         private IActionResult? CheckLogin()
             => IsLoggedIn ? null : Redirect("/admin/login");
 
         [HttpGet("login")]
         public IActionResult Login()
-            => IsLoggedIn ? Redirect("/admin/users") : View();
+        {
+            if (IsLoggedIn)
+            {
+                return Redirect("/admin/users");
+            }
+
+            if (string.Equals(HttpContext.Session.GetString("UserRole"), "specialist", StringComparison.OrdinalIgnoreCase))
+            {
+                return Redirect("/specialist");
+            }
+
+            return View();
+        }
 
         [HttpPost("login")]
         public async Task<IActionResult> LoginPost(
             [FromForm] string email, [FromForm] string password)
         {
+            var normalizedEmail = NormalizeEmail(email);
             var user = await _db.Users
-                .FirstOrDefaultAsync(u => u.Email == email && u.Role == "admin");
+                .FirstOrDefaultAsync(u =>
+                    u.Email == normalizedEmail &&
+                    (u.Role == "admin" || u.Role == "specialist"));
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+            if (user == null || !user.IsActive || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
                 ViewBag.Error = "Невірний email або пароль";
                 return View("Login");
             }
 
-            HttpContext.Session.SetInt32("AdminId", user.UserId);
-            HttpContext.Session.SetString("AdminName", user.FullName);
-            return Redirect("/admin/users");
+            HttpContext.Session.SetInt32("UserId", user.UserId);
+            HttpContext.Session.SetString("UserRole", user.Role);
+            HttpContext.Session.SetString("UserName", user.FullName);
+            HttpContext.Session.SetString("UserEmail", user.Email);
+
+            if (user.Role == "admin")
+            {
+                HttpContext.Session.SetInt32("AdminId", user.UserId);
+                HttpContext.Session.SetString("AdminName", user.FullName);
+                HttpContext.Session.SetString("AdminRole", "admin");
+                return Redirect("/admin/users");
+            }
+
+            HttpContext.Session.Remove("AdminId");
+            HttpContext.Session.Remove("AdminName");
+            HttpContext.Session.Remove("AdminRole");
+            return Redirect("/specialist");
         }
 
         [HttpGet("logout")]
@@ -60,11 +92,18 @@ namespace CtrlZMyBody.API.Controllers
         [HttpPost("users/save")]
         public async Task<IActionResult> UserSave([FromForm] UserFormModel form)
         {
+            form.Email = NormalizeEmail(form.Email);
+            if (!IsDomainAllowed(form.Email))
+            {
+                TempData["Error"] = $"Дозволено лише email у домені {RequiredDomain}";
+                return Redirect("/admin/users");
+            }
+
             if (form.UserId == 0)
             {
                 if (await _db.Users.AnyAsync(u => u.Email == form.Email))
                 {
-                    TempData["Error"] = "Користувач з таким email вже існує";
+                    TempData["Error"] = "РљРѕСЂРёСЃС‚СѓРІР°С‡ Р· С‚Р°РєРёРј email РІР¶Рµ С–СЃРЅСѓС”";
                     return Redirect("/admin/users");
                 }
                 _db.Users.Add(new User
@@ -79,7 +118,7 @@ namespace CtrlZMyBody.API.Controllers
                     CreatedAt    = DateTime.UtcNow,
                     UpdatedAt    = DateTime.UtcNow
                 });
-                TempData["Success"] = "Користувача додано";
+                TempData["Success"] = "РљРѕСЂРёСЃС‚СѓРІР°С‡Р° РґРѕРґР°РЅРѕ";
             }
             else
             {
@@ -93,7 +132,7 @@ namespace CtrlZMyBody.API.Controllers
                 u.UpdatedAt = DateTime.UtcNow;
                 if (!string.IsNullOrWhiteSpace(form.Password))
                     u.PasswordHash = BCrypt.Net.BCrypt.HashPassword(form.Password);
-                TempData["Success"] = "Збережено";
+                TempData["Success"] = "Р—Р±РµСЂРµР¶РµРЅРѕ";
             }
             await _db.SaveChangesAsync();
             return Redirect("/admin/users");
@@ -104,7 +143,7 @@ namespace CtrlZMyBody.API.Controllers
         {
             var item = await _db.Users.FindAsync(id);
             if (item != null) { _db.Users.Remove(item); await _db.SaveChangesAsync(); }
-            TempData["Success"] = "Видалено";
+            TempData["Success"] = "Р’РёРґР°Р»РµРЅРѕ";
             return Redirect("/admin/users");
         }
 
@@ -132,7 +171,7 @@ namespace CtrlZMyBody.API.Controllers
                 if (item != null) { item.Name = Name; item.Description = Description; }
             }
             await _db.SaveChangesAsync();
-            TempData["Success"] = CategoryId == 0 ? "Додано" : "Збережено";
+            TempData["Success"] = CategoryId == 0 ? "Р”РѕРґР°РЅРѕ" : "Р—Р±РµСЂРµР¶РµРЅРѕ";
             return Redirect("/admin/categories");
         }
 
@@ -141,7 +180,7 @@ namespace CtrlZMyBody.API.Controllers
         {
             var item = await _db.ExerciseCategories.FindAsync(id);
             if (item != null) { _db.ExerciseCategories.Remove(item); await _db.SaveChangesAsync(); }
-            TempData["Success"] = "Видалено";
+            TempData["Success"] = "Р’РёРґР°Р»РµРЅРѕ";
             return Redirect("/admin/categories");
         }
 
@@ -177,7 +216,7 @@ namespace CtrlZMyBody.API.Controllers
                     PhotoUrl           = form.PhotoUrl,
                     IsActive           = form.IsActive
                 });
-                TempData["Success"] = "Вправу додано";
+                TempData["Success"] = "Р’РїСЂР°РІСѓ РґРѕРґР°РЅРѕ";
             }
             else
             {
@@ -193,7 +232,7 @@ namespace CtrlZMyBody.API.Controllers
                 item.VideoUrl           = form.VideoUrl;
                 item.PhotoUrl           = form.PhotoUrl;
                 item.IsActive           = form.IsActive;
-                TempData["Success"] = "Збережено";
+                TempData["Success"] = "Р—Р±РµСЂРµР¶РµРЅРѕ";
             }
             await _db.SaveChangesAsync();
             return Redirect("/admin/exercises");
@@ -204,7 +243,7 @@ namespace CtrlZMyBody.API.Controllers
         {
             var item = await _db.Exercises.FindAsync(id);
             if (item != null) { _db.Exercises.Remove(item); await _db.SaveChangesAsync(); }
-            TempData["Success"] = "Видалено";
+            TempData["Success"] = "Р’РёРґР°Р»РµРЅРѕ";
             return Redirect("/admin/exercises");
         }
 
@@ -231,7 +270,7 @@ namespace CtrlZMyBody.API.Controllers
                     IconUrl     = form.IconUrl,
                     IsActive    = form.IsActive
                 });
-                TempData["Success"] = "Додано";
+                TempData["Success"] = "Р”РѕРґР°РЅРѕ";
             }
             else
             {
@@ -245,7 +284,7 @@ namespace CtrlZMyBody.API.Controllers
                     item.IconUrl     = form.IconUrl;
                     item.IsActive    = form.IsActive;
                 }
-                TempData["Success"] = "Збережено";
+                TempData["Success"] = "Р—Р±РµСЂРµР¶РµРЅРѕ";
             }
             await _db.SaveChangesAsync();
             return Redirect("/admin/injuries");
@@ -256,7 +295,7 @@ namespace CtrlZMyBody.API.Controllers
         {
             var item = await _db.InjuryTypes.FindAsync(id);
             if (item != null) { _db.InjuryTypes.Remove(item); await _db.SaveChangesAsync(); }
-            TempData["Success"] = "Видалено";
+            TempData["Success"] = "Р’РёРґР°Р»РµРЅРѕ";
             return Redirect("/admin/injuries");
         }
 
@@ -286,7 +325,7 @@ namespace CtrlZMyBody.API.Controllers
                     { item.Name = Name; item.Slug = Slug; item.OrderIndex = OrderIndex; }
             }
             await _db.SaveChangesAsync();
-            TempData["Success"] = DifficultyLevelId == 0 ? "Додано" : "Збережено";
+            TempData["Success"] = DifficultyLevelId == 0 ? "Р”РѕРґР°РЅРѕ" : "Р—Р±РµСЂРµР¶РµРЅРѕ";
             return Redirect("/admin/difficulties");
         }
 
@@ -295,7 +334,7 @@ namespace CtrlZMyBody.API.Controllers
         {
             var item = await _db.DifficultyLevels.FindAsync(id);
             if (item != null) { _db.DifficultyLevels.Remove(item); await _db.SaveChangesAsync(); }
-            TempData["Success"] = "Видалено";
+            TempData["Success"] = "Р’РёРґР°Р»РµРЅРѕ";
             return Redirect("/admin/difficulties");
         }
 
@@ -335,7 +374,7 @@ namespace CtrlZMyBody.API.Controllers
                     TotalDays         = form.TotalDays,
                     IsActive          = form.IsActive
                 });
-                TempData["Success"] = "План додано";
+                TempData["Success"] = "РџР»Р°РЅ РґРѕРґР°РЅРѕ";
             }
             else
             {
@@ -347,7 +386,7 @@ namespace CtrlZMyBody.API.Controllers
                 item.DifficultyLevelId = form.DifficultyLevelId;
                 item.TotalDays         = form.TotalDays;
                 item.IsActive          = form.IsActive;
-                TempData["Success"] = "Збережено";
+                TempData["Success"] = "Р—Р±РµСЂРµР¶РµРЅРѕ";
             }
             await _db.SaveChangesAsync();
             return Redirect("/admin/plans");
@@ -358,7 +397,7 @@ namespace CtrlZMyBody.API.Controllers
         {
             var item = await _db.WorkoutPlans.FindAsync(id);
             if (item != null) { _db.WorkoutPlans.Remove(item); await _db.SaveChangesAsync(); }
-            TempData["Success"] = "Видалено";
+            TempData["Success"] = "Р’РёРґР°Р»РµРЅРѕ";
             return Redirect("/admin/plans");
         }
 
@@ -387,7 +426,7 @@ namespace CtrlZMyBody.API.Controllers
                     GoalMetric  = form.GoalMetric,
                     IsActive    = form.IsActive
                 });
-                TempData["Success"] = "Челендж додано";
+                TempData["Success"] = "Р§РµР»РµРЅРґР¶ РґРѕРґР°РЅРѕ";
             }
             else
             {
@@ -401,7 +440,7 @@ namespace CtrlZMyBody.API.Controllers
                 item.GoalValue   = form.GoalValue;
                 item.GoalMetric  = form.GoalMetric;
                 item.IsActive    = form.IsActive;
-                TempData["Success"] = "Збережено";
+                TempData["Success"] = "Р—Р±РµСЂРµР¶РµРЅРѕ";
             }
             await _db.SaveChangesAsync();
             return Redirect("/admin/challenges");
@@ -412,9 +451,15 @@ namespace CtrlZMyBody.API.Controllers
         {
             var item = await _db.Challenges.FindAsync(id);
             if (item != null) { _db.Challenges.Remove(item); await _db.SaveChangesAsync(); }
-            TempData["Success"] = "Видалено";
+            TempData["Success"] = "Р’РёРґР°Р»РµРЅРѕ";
             return Redirect("/admin/challenges");
         }
+
+        private static string NormalizeEmail(string email) =>
+            email.Trim().ToLowerInvariant();
+
+        private static bool IsDomainAllowed(string email) =>
+            email.EndsWith(RequiredDomain, StringComparison.Ordinal);
     }
 
     public class UserFormModel
@@ -479,4 +524,6 @@ namespace CtrlZMyBody.API.Controllers
         public bool     IsActive     { get; set; } = true;
     }
 }
+
+
 

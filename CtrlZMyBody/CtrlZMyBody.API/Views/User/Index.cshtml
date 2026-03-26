@@ -1,0 +1,297 @@
+﻿@model UserDashboardViewModel
+@{
+    ViewData["Title"] = "Моя реабілітація";
+    var userName = Context.Session.GetString("UserName") ?? "Користувач";
+
+    string? ToYoutubeEmbed(string? rawUrl)
+    {
+        if (string.IsNullOrWhiteSpace(rawUrl))
+        {
+            return null;
+        }
+
+        if (rawUrl.Contains("youtube.com/embed/", StringComparison.OrdinalIgnoreCase))
+        {
+            return rawUrl;
+        }
+
+        if (!Uri.TryCreate(rawUrl, UriKind.Absolute, out var uri))
+        {
+            return null;
+        }
+
+        if (uri.Host.Contains("youtu.be", StringComparison.OrdinalIgnoreCase))
+        {
+            return $"https://www.youtube.com/embed/{uri.AbsolutePath.Trim('/')}";
+        }
+
+        var pairs = uri.Query.TrimStart('?').Split('&', StringSplitOptions.RemoveEmptyEntries);
+        foreach (var pair in pairs)
+        {
+            var kv = pair.Split('=', 2);
+            if (kv.Length == 2 && kv[0] == "v")
+            {
+                return $"https://www.youtube.com/embed/{Uri.UnescapeDataString(kv[1])}";
+            }
+        }
+
+        return null;
+    }
+
+    var planDays = Model.CurrentPlan?.Days.OrderBy(d => d.DayNumber).ToList() ?? [];
+}
+
+<div class="dashboard">
+    <section class="dashboard-head">
+        <div>
+            <h1>Привіт, @userName</h1>
+            <p>
+                Тут твоє головне меню відновлення: вибір травми, щоденні вправи, чекін болю, консультації та
+                динаміка проходження плану.
+            </p>
+        </div>
+        <div class="quick-stats">
+            <article>
+                <span>Активна травма</span>
+                <strong>@(Model.ActiveProfile?.InjuryType?.Name ?? "Не обрано")</strong>
+            </article>
+            <article>
+                <span>Рівень</span>
+                <strong>@(Model.ActiveProfile?.DifficultyLevel?.Name ?? "Не обрано")</strong>
+            </article>
+            <article>
+                <span>Сьогоднішній чекін</span>
+                <strong>@(Model.TodayCheckIn == null ? "Немає" : $"Біль: {Model.TodayCheckIn.PainLevel}/10")</strong>
+            </article>
+        </div>
+    </section>
+
+    <section class="panel" id="rehab">
+        <h2>Моя реабілітація</h2>
+        <p class="section-sub">Обери профіль, відкрий вправи на день і проходь план з відеоінструкціями.</p>
+
+        <div class="panel-grid">
+            <div>
+                <h3>1. Профіль відновлення</h3>
+                <form method="post" action="/user/profile" class="auth-form">
+                    @Html.AntiForgeryToken()
+                    <div class="form-row">
+                        <label for="injuryTypeId">Тип травми</label>
+                        <select id="injuryTypeId" name="injuryTypeId" required>
+                            @foreach (var injury in Model.InjuryTypes)
+                            {
+                                <option value="@injury.InjuryTypeId" selected="@(Model.ActiveProfile?.InjuryTypeId == injury.InjuryTypeId)">@injury.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="difficultyLevelId">Рівень підготовки</label>
+                        <select id="difficultyLevelId" name="difficultyLevelId" required>
+                            @foreach (var difficulty in Model.DifficultyLevels)
+                            {
+                                <option value="@difficulty.DifficultyLevelId" selected="@(Model.ActiveProfile?.DifficultyLevelId == difficulty.DifficultyLevelId)">@difficulty.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Зберегти профіль</button>
+                </form>
+
+                @if (Model.CurrentPlan == null)
+                {
+                    <p class="input-hint">Після вибору травми й рівня система підбере відповідний план тренувань.</p>
+                }
+                else
+                {
+                    <div class="section-actions">
+                        @foreach (var day in planDays)
+                        {
+                            <a href="/user?day=@day.DayNumber#rehab" class="btn @(Model.CurrentDay?.PlanDayId == day.PlanDayId ? "btn-primary" : "btn-ghost")">День @day.DayNumber</a>
+                        }
+                    </div>
+
+                    @if (Model.CurrentDay != null)
+                    {
+                        <div class="exercise-list" style="margin-top:14px;">
+                            @foreach (var exercise in Model.CurrentDay.Exercises.OrderBy(e => e.OrderIndex))
+                            {
+                                var embedUrl = ToYoutubeEmbed(exercise.Exercise?.VideoUrl);
+                                <article class="exercise-item">
+                                    <h4>@(exercise.Exercise?.Title ?? "Вправа")</h4>
+                                    <p>@(exercise.Exercise?.Description ?? "Виконуй вправу у комфортному темпі.")</p>
+                                    <div class="exercise-meta">
+                                        <span>Підходи: @exercise.Sets</span>
+                                        <span>Повторення: @exercise.Reps</span>
+                                        <span>Час: @exercise.DurationSec сек</span>
+                                    </div>
+
+                                    <form method="post" action="/user/exercise/complete" class="inline-form">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="PlanDayId" value="@Model.CurrentDay.PlanDayId" />
+                                        <input type="hidden" name="DayNumber" value="@Model.CurrentDay.DayNumber" />
+                                        <input type="hidden" name="ExerciseId" value="@exercise.ExerciseId" />
+                                        <input type="number" name="Sets" value="@exercise.Sets" min="1" required />
+                                        <input type="number" name="Reps" value="@exercise.Reps" min="1" required />
+                                        <input type="number" name="DurationSec" value="@exercise.DurationSec" min="10" step="10" required />
+                                        <button class="btn btn-primary" type="submit">Виконано</button>
+                                    </form>
+
+                                    @if (!string.IsNullOrWhiteSpace(embedUrl))
+                                    {
+                                        <iframe class="video-frame" src="@embedUrl" title="Відеоінструкція" allowfullscreen></iframe>
+                                    }
+                                </article>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+
+            <div>
+                <div class="timer-box" data-rehab-timer>
+                    <h3>Таймер вправи</h3>
+                    <p class="input-hint">Встанови хвилини та запускай таймер під час виконання.</p>
+                    <input type="number" min="1" value="1" data-timer-minutes style="margin-bottom:10px; width:110px;">
+                    <div class="timer-display" data-timer-display>00:00</div>
+                    <div class="timer-controls">
+                        <button type="button" class="btn btn-primary" data-timer-start>Старт</button>
+                        <button type="button" class="btn btn-ghost" data-timer-pause>Пауза</button>
+                        <button type="button" class="btn btn-ghost" data-timer-reset>Скинути</button>
+                    </div>
+                </div>
+
+                <div class="panel" style="margin-top:14px; padding:14px;">
+                    <h3>Останні сесії</h3>
+                    <div class="history-list">
+                        @if (Model.RecentSessions.Count == 0)
+                        {
+                            <div class="history-item">Ще немає завершених сесій.</div>
+                        }
+                        else
+                        {
+                            @foreach (var session in Model.RecentSessions)
+                            {
+                                <div class="history-item">
+                                    <strong>@session.SessionDate</strong>
+                                    <div class="input-hint">Виконано: @session.CompletedExercises / @session.TotalExercises</div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel" id="checkin">
+        <h2>Щоденний чекін</h2>
+        <p class="section-sub">Оціни біль, додай самопочуття і фото до/після для візуального контролю прогресу.</p>
+
+        <form method="post" action="/user/checkin" enctype="multipart/form-data" class="auth-form">
+            @Html.AntiForgeryToken()
+            <div class="panel-grid">
+                <div>
+                    <div class="form-row">
+                        <label for="painLevel">Рівень болю (1-10)</label>
+                        <input id="painLevel" type="number" name="PainLevel" min="1" max="10" required value="@(Model.TodayCheckIn?.PainLevel ?? 5)" />
+                    </div>
+                    <div class="form-row">
+                        <label for="mood">Настрій</label>
+                        <input id="mood" type="text" name="Mood" value="@(Model.TodayCheckIn?.Mood)" placeholder="Наприклад: краще, стабільно" />
+                    </div>
+                    <div class="form-row">
+                        <label for="comment">Коментар</label>
+                        <textarea id="comment" name="Comment" placeholder="Що змінилося сьогодні?">@(Model.TodayCheckIn?.Comment)</textarea>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-row">
+                        <label for="photoBefore">Фото до</label>
+                        <input id="photoBefore" type="file" name="photoBefore" accept=".jpg,.jpeg,.png,.webp" />
+                        @if (!string.IsNullOrWhiteSpace(Model.TodayCheckIn?.PhotoBeforeUrl))
+                        {
+                            <a class="input-hint" href="@Model.TodayCheckIn.PhotoBeforeUrl" target="_blank">Відкрити поточне фото до</a>
+                        }
+                    </div>
+                    <div class="form-row">
+                        <label for="photoAfter">Фото після</label>
+                        <input id="photoAfter" type="file" name="photoAfter" accept=".jpg,.jpeg,.png,.webp" />
+                        @if (!string.IsNullOrWhiteSpace(Model.TodayCheckIn?.PhotoAfterUrl))
+                        {
+                            <a class="input-hint" href="@Model.TodayCheckIn.PhotoAfterUrl" target="_blank">Відкрити поточне фото після</a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Зберегти чекін</button>
+        </form>
+    </section>
+
+    <section class="panel" id="consultations">
+        <h2>Консультація зі спеціалістом</h2>
+        <p class="section-sub">Опиши проблему та, за потреби, додай посилання на фото.</p>
+
+        <form method="post" action="/user/consultation" class="auth-form">
+            @Html.AntiForgeryToken()
+            <div class="form-row">
+                <label for="problem">Опис проблеми</label>
+                <textarea id="problem" name="Problem" required placeholder="Що турбує? Коли виникає біль?"></textarea>
+            </div>
+            <div class="form-row">
+                <label for="photoUrl">URL фото (опціонально)</label>
+                <input id="photoUrl" type="url" name="PhotoUrl" placeholder="https://..." />
+            </div>
+            <button class="btn btn-primary" type="submit">Надіслати запит</button>
+        </form>
+
+        <div class="consult-list" style="margin-top:14px;">
+            @if (Model.Consultations.Count == 0)
+            {
+                <div class="consult-item">Ти ще не надсилав запити на консультацію.</div>
+            }
+            else
+            {
+                @foreach (var consultation in Model.Consultations)
+                {
+                    var done = consultation.Status == "completed";
+                    <article class="consult-item">
+                        <span class="pill @(done ? "done" : "pending")">@(done ? "Завершено" : "Очікує")</span>
+                        <p>@consultation.ProblemDescription</p>
+                        @if (!string.IsNullOrWhiteSpace(consultation.ResponseText))
+                        {
+                            <p><strong>Відповідь:</strong> @consultation.ResponseText</p>
+                        }
+                        <div class="input-hint">
+                            @consultation.RequestedAt.ToString("dd.MM.yyyy HH:mm")
+                            @if (consultation.Specialist != null)
+                            {
+                                @: | Спеціаліст: @consultation.Specialist.FullName
+                            }
+                        </div>
+                    </article>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Активні челенджі</h2>
+        <div class="mini-grid">
+            @if (Model.ActiveChallenges.Count == 0)
+            {
+                <article>Зараз активних челенджів немає.</article>
+            }
+            else
+            {
+                @foreach (var challenge in Model.ActiveChallenges)
+                {
+                    <article>
+                        <strong>@challenge.Title</strong>
+                        <p>@challenge.Description</p>
+                        <div class="input-hint">До @challenge.EndDate</div>
+                    </article>
+                }
+            }
+        </div>
+    </section>
+</div>
+

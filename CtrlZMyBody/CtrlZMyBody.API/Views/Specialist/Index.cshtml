@@ -1,0 +1,75 @@
+﻿@model SpecialistDashboardViewModel
+@{
+    ViewData["Title"] = "Кабінет спеціаліста";
+}
+
+<div class="dashboard">
+    <section class="specialist-hero">
+        <h1>Робочий кабінет спеціаліста</h1>
+        <p>Тут видно нові заявки від користувачів. Обробляй запити, надавай рекомендації та закривай консультації.</p>
+    </section>
+
+    <section class="panel">
+        <h2>Заявки в очікуванні</h2>
+        <p class="section-sub">Статус pending. Після відповіді запит переходить у completed.</p>
+
+        <div class="consult-list">
+            @if (Model.PendingConsultations.Count == 0)
+            {
+                <div class="consult-item">Наразі нових заявок немає.</div>
+            }
+            else
+            {
+                @foreach (var consultation in Model.PendingConsultations)
+                {
+                    <article class="request-card">
+                        <h4>@(consultation.User?.FullName ?? $"User #{consultation.UserId}")</h4>
+                        <p>@consultation.ProblemDescription</p>
+                        @if (!string.IsNullOrWhiteSpace(consultation.PhotoUrl))
+                        {
+                            <a href="@consultation.PhotoUrl" target="_blank">Переглянути вкладення</a>
+                        }
+                        <div class="request-meta">Створено: @consultation.RequestedAt.ToString("dd.MM.yyyy HH:mm")</div>
+
+                        <form method="post" action="/specialist/respond" class="auth-form" style="margin-top:12px;">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="ConsultationId" value="@consultation.ConsultationId" />
+                            <div class="form-row">
+                                <label>Відповідь спеціаліста</label>
+                                <textarea name="Response" required placeholder="Рекомендації, обмеження, наступні кроки"></textarea>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Надіслати відповідь</button>
+                        </form>
+                    </article>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Останні оброблені консультації</h2>
+        <div class="consult-list">
+            @if (Model.MyRecentConsultations.Count == 0)
+            {
+                <div class="consult-item">Ще немає завершених консультацій.</div>
+            }
+            else
+            {
+                @foreach (var consultation in Model.MyRecentConsultations)
+                {
+                    <article class="consult-item">
+                        <span class="pill @(consultation.Status == "completed" ? "done" : "pending")">@consultation.Status</span>
+                        <p><strong>Користувач:</strong> @(consultation.User?.FullName ?? $"User #{consultation.UserId}")</p>
+                        <p>@consultation.ProblemDescription</p>
+                        @if (!string.IsNullOrWhiteSpace(consultation.ResponseText))
+                        {
+                            <p><strong>Відповідь:</strong> @consultation.ResponseText</p>
+                        }
+                        <div class="input-hint">@consultation.RequestedAt.ToString("dd.MM.yyyy HH:mm")</div>
+                    </article>
+                }
+            }
+        </div>
+    </section>
+</div>
+

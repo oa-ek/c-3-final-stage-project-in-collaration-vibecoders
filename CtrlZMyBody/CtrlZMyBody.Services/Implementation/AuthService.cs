@@ -12,6 +12,7 @@ namespace CtrlZMyBody.Services.Implementation
 {
     public class AuthService : IAuthService
     {
+        private const string RequiredDomain = "@ctrlz.com";
         private readonly IUserRepository _userRepo;
         private readonly IConfiguration _config;
 
@@ -24,12 +25,15 @@ namespace CtrlZMyBody.Services.Implementation
         public async Task<(User user, string token)> RegisterAsync(string email, string password,
             string firstName, string lastName, string? phone = null)
         {
-            if (await _userRepo.EmailExistsAsync(email))
+            var normalizedEmail = NormalizeEmail(email);
+            ValidateEmailDomain(normalizedEmail);
+
+            if (await _userRepo.EmailExistsAsync(normalizedEmail))
                 throw new InvalidOperationException("Користувач з таким email вже існує.");
 
             var user = new User
             {
-                Email = email.ToLower().Trim(),
+                Email = normalizedEmail,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(password),
                 FirstName = firstName,
                 LastName = lastName,
@@ -46,7 +50,7 @@ namespace CtrlZMyBody.Services.Implementation
 
         public async Task<(User user, string token)> LoginAsync(string email, string password)
         {
-            var user = await _userRepo.GetByEmailAsync(email.ToLower().Trim())
+            var user = await _userRepo.GetByEmailAsync(NormalizeEmail(email))
                 ?? throw new UnauthorizedAccessException("Невірний email або пароль.");
 
             if (!user.IsActive)
@@ -82,6 +86,17 @@ namespace CtrlZMyBody.Services.Implementation
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private static string NormalizeEmail(string email) =>
+            email.Trim().ToLowerInvariant();
+
+        private static void ValidateEmailDomain(string email)
+        {
+            if (!email.EndsWith(RequiredDomain, StringComparison.Ordinal))
+            {
+                throw new InvalidOperationException($"Дозволено лише email у домені {RequiredDomain}.");
+            }
         }
     }
 }

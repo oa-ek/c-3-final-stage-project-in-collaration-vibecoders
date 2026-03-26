@@ -1,8 +1,166 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Головна";
+    var isLoggedIn = Context.Session.GetInt32("UserId") != null;
+    var startRehabUrl = isLoggedIn ? "/user" : "/account/register";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="landing">
+    <section class="hero" id="why">
+        <div class="hero-copy">
+            <div>
+                <h1>Відновлення після травм з чітким щоденним планом</h1>
+                <p>
+                    CtrlZMyBody допомагає безпечно повернутись до активного життя: від вибору травми до персонального
+                    плану вправ, чекінів болю та консультацій зі спеціалістом.
+                </p>
+            </div>
+
+            <div class="hero-list">
+                <article>
+                    <h4>План по днях</h4>
+                    <p>Готовий розклад вправ із підходами, повтореннями та таймером.</p>
+                </article>
+                <article>
+                    <h4>Відстеження стану</h4>
+                    <p>Щоденний pain-check, нотатки й фото до/після для контролю динаміки.</p>
+                </article>
+                <article>
+                    <h4>Підтримка</h4>
+                    <p>Запити до спеціаліста та консультації прямо у кабінеті користувача.</p>
+                </article>
+            </div>
+        </div>
+
+        <aside class="hero-side">
+            @if (!isLoggedIn)
+            {
+                <div class="side-card">
+                    <h3>Почни за 2 хвилини</h3>
+                    <p>Створи акаунт, обери травму та рівень підготовки, отримай персональний маршрут реабілітації.</p>
+                </div>
+                <figure class="hero-side-media">
+                    <img src="/images/image 1.png" alt="Реабілітація" loading="lazy" />
+                </figure>
+                <div class="side-stack">
+                    <a class="btn1 btn-ghost" href="/account/login">Увійти</a>
+                    <a class="btn1 btn-primary" href="/account/register">Почати реабілітацію</a>
+                </div>
+            }
+            else
+            {
+                <div class="side-card">
+                    <h3>Ти вже в системі</h3>
+                    <p>Повернись до свого кабінету, продовж поточний план і зафіксуй сьогоднішній чекін.</p>
+                </div>
+                <figure class="hero-side-media">
+                    <img src="/images/042.jpg" alt="Реабілітація" loading="lazy" />
+                </figure>
+                <div class="side-stack">
+                    <a class="btn btn-primary" href="/user">Відкрити мою реабілітацію</a>
+                </div>
+            }
+        </aside>
+    </section>
+
+    <section id="flow" class="landing-section green">
+        <h2>Як працює сервіс</h2>
+        <div class="two-col">
+            <div class="steps">
+                <article class="step">
+                    <h3>1. Обери травму та складність</h3>
+                    <p>Користувач задає тип травми й свій рівень підготовки.</p>
+                </article>
+                <article class="step">
+                    <h3>2. Отримай персональний план</h3>
+                    <p>Система підбирає програму відновлення по днях із вправами.</p>
+                </article>
+                <article class="step">
+                    <h3>3. Фіксуй прогрес</h3>
+                    <p>Pain-level,check-in, фото до/після, історія виконань і консультації зі спеціалістом.</p>
+                </article>
+            </div>
+            <div class="steps">
+                <article class="step">
+                    <h3>4. Відеоінструкції</h3>
+                    <p>Кожна вправа може містити YouTube URL для технічно коректного виконання.</p>
+                </article>
+                <article class="step">
+                    <h3>5. Мотивація</h3>
+                    <p>Активні челенджі, очки за виконання і видимий прогрес по днях.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="checkin" class="landing-section dark">
+        <h2>Щоденний контроль прогресу</h2>
+        <div class="data-grid">
+            <article>
+                <strong>1-10</strong>
+                <span>Шкала болю для щоденної оцінки</span>
+            </article>
+            <article>
+                <strong>24/7</strong>
+                <span>Доступ до історії чекінів і нотаток</span>
+            </article>
+            <article>
+                <strong>Фото</strong>
+                <span>Порівняння стану до/після</span>
+            </article>
+            <article>
+                <strong>Графік</strong>
+                <span>Наочна динаміка відновлення</span>
+            </article>
+        </div>
+    </section>
+
+    <section id="profiles" class="landing-section">
+        <h2>Кому підходить CtrlZMyBody</h2>
+        <div class="profile-grid">
+            <article>
+                <h4>Пацієнт після травми</h4>
+                <p>Покроковий план, нагадування, графік одужання.</p>
+            </article>
+            <article>
+                <h4>Ветеран</h4>
+                <p>Гнучкі програми відновлення та регулярний контроль болю.</p>
+            </article>
+            <article>
+                <h4>Спортсмен</h4>
+                <p>Деталізація навантажень, статистика та челенджі.</p>
+            </article>
+            <article>
+                <h4>Хронічний біль</h4>
+                <p>Простий інтерфейс, щоденні чекіни та консультації.</p>
+            </article>
+            <article>
+                <h4>Післяопераційний етап</h4>
+                <p>Обережні вправи початкового рівня та контроль стану.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="consult" class="landing-section">
+        <h2>Підтримка спеціаліста</h2>
+        <div class="two-col">
+            <div class="step">
+                <h3>Запит прямо з кабінету</h3>
+                <p>Користувач описує проблему, додає матеріали та відправляє заявку на консультацію.</p>
+            </div>
+            <div class="step">
+                <h3>Відповідь без зайвих кроків</h3>
+                <p>Спеціаліст бачить pending-запити, дає рекомендації і закриває заявку.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="landing-section dark final-cta" id="rehab">
+        <h2>Готовий почати реабілітацію без хаосу?</h2>
+        <p>
+            Платформа не замінює лікаря, але працює як надійний щоденний помічник між консультаціями.
+            Почни з першого кроку вже зараз.
+        </p>
+        <a href="@startRehabUrl" class="btn btn-primary">Почати реабілітацію</a>
+    </section>
 </div>
+

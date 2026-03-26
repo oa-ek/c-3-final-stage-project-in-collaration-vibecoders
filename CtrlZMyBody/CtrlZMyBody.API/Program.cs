@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -48,7 +48,7 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromHours(2);
+    options.IdleTimeout = TimeSpan.FromHours(8);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
@@ -60,14 +60,55 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
-    if (!db.Users.Any(u => u.Email == "admin@admin.com"))
+
+    // Force a single email domain across existing accounts.
+    var allUsers = db.Users.ToList();
+    var usedEmails = new HashSet<string>(allUsers.Select(u => u.Email.ToLowerInvariant()));
+    var hasDomainUpdates = false;
+
+    foreach (var user in allUsers)
+    {
+        var current = user.Email.Trim().ToLowerInvariant();
+        if (current.EndsWith("@ctrlz.com", StringComparison.Ordinal))
+        {
+            continue;
+        }
+
+        usedEmails.Remove(current);
+        var localPart = current.Split('@', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
+        if (string.IsNullOrWhiteSpace(localPart))
+        {
+            localPart = $"user{user.UserId}";
+        }
+
+        localPart = localPart.Trim().ToLowerInvariant();
+        var nextEmail = $"{localPart}@ctrlz.com";
+        var suffix = 1;
+        while (usedEmails.Contains(nextEmail))
+        {
+            nextEmail = $"{localPart}{suffix}@ctrlz.com";
+            suffix++;
+        }
+
+        user.Email = nextEmail;
+        user.UpdatedAt = DateTime.UtcNow;
+        usedEmails.Add(nextEmail);
+        hasDomainUpdates = true;
+    }
+
+    if (hasDomainUpdates)
+    {
+        db.SaveChanges();
+    }
+
+    if (!db.Users.Any(u => u.Email == "admin@ctrlz.com"))
     {
         db.Users.Add(new CtrlZMyBody.Core.Models.User
         {
-            Email = "admin@admin.com",
+            Email = "admin@ctrlz.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin123"),
-            FirstName = "РђРґРјС–РЅ",
-            LastName = "Р“РѕР»РѕРІРЅРёР№",
+            FirstName = "Admin",
+            LastName = "CtrlZ",
             Role = "admin",
             IsActive = true,
             CreatedAt = DateTime.UtcNow,
@@ -96,3 +137,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

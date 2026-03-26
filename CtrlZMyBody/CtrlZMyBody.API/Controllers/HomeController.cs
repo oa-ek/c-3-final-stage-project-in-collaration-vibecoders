@@ -6,7 +6,13 @@ namespace CtrlZMyBody.API.Controllers
     {
         public IActionResult Index()
         {
-            return Redirect("/admin/login");
+            ViewData["BodyClass"] = "landing-page";
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
         }
     }
 }

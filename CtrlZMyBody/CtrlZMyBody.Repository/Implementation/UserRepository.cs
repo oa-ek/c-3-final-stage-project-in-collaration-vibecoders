@@ -10,12 +10,12 @@ namespace CtrlZMyBody.Repository.Implementation
         public UserRepository(AppDbContext context) : base(context) { }
 
         public async Task<User?> GetByEmailAsync(string email) =>
-            await _dbSet.FirstOrDefaultAsync(u => u.Email == email);
+            await _dbSet.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
 
         public async Task<IEnumerable<User>> GetByRoleAsync(string role) =>
             await _dbSet.Where(u => u.Role == role && u.IsActive).ToListAsync();
 
         public async Task<bool> EmailExistsAsync(string email) =>
-            await _dbSet.AnyAsync(u => u.Email == email);
+            await _dbSet.AnyAsync(u => u.Email.ToLower() == email.ToLower());
     }
 }

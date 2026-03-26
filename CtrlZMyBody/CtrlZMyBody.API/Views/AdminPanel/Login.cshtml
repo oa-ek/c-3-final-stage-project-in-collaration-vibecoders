@@ -6,42 +6,32 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Admin Login — CtrlZMyBody</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; background: #2c3e50; display: flex; align-items: center; justify-content: center; height: 100vh; }
-.box { background: #fff; padding: 34px 32px; border-radius: 4px; width: 320px; box-shadow: 0 4px 20px rgba(0,0,0,.3); }
-.box h2 { margin-bottom: 6px; color: #2c3e50; font-size: 18px; }
-.box p { color: #888; font-size: 12px; margin-bottom: 22px; }
-.box label { display: block; font-size: 12px; color: #636e72; margin-bottom: 4px; }
-.box input {
-    width: 100%; padding: 9px 10px; margin-bottom: 14px;
-    border: 1px solid #ddd; border-radius: 3px; font-size: 14px;
-}
-.box input:focus { outline: none; border-color: #3498db; }
-.box button {
-    width: 100%; padding: 10px; background: #3498db; color: #fff;
-    border: none; border-radius: 3px; cursor: pointer; font-size: 14px;
-}
-.box button:hover { background: #2980b9; }
-.error { color: #e74c3c; font-size: 13px; margin-top: 10px; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login - CtrlZMyBody</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
 </head>
-<body>
-<div class="box">
-  <h2>CtrlZMyBody</h2>
-  <p>Панель адміністратора</p>
-  <form method="post" action="/admin/login">
-    <label>Email</label>
-    <input type="email" name="email" placeholder="admin@admin.com" required autofocus>
-    <label>Пароль</label>
-    <input type="password" name="password" placeholder="••••••••" required>
-    <button type="submit">Увійти</button>
-  </form>
-  @if (ViewBag.Error != null)
-  {
-      <div class="error">✘ @ViewBag.Error</div>
-  }
+<body class="admin-auth-page">
+<div class="admin-auth-box">
+    <h2>CtrlZMyBody Admin</h2>
+    <p>Увійдіть для керування контентом і ролями користувачів.</p>
+
+    <form method="post" action="/admin/login" class="admin-auth-form">
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required autofocus>
+
+        <label for="password">Пароль</label>
+        <input id="password" type="password" name="password" required>
+
+        <button type="submit">Увійти</button>
+    </form>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="error">@ViewBag.Error</div>
+    }
 </div>
 </body>
 </html>

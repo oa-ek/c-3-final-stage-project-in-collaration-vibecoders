@@ -1,0 +1,40 @@
+﻿@model LoginFormModel
+@{
+    ViewData["Title"] = "Вхід";
+    var returnUrl = ViewBag.ReturnUrl as string;
+}
+
+<div class="auth-wrap">
+    <div class="auth-card">
+        <h1>Вхід у CtrlZMyBody</h1>
+        <p>Повернись до свого плану реабілітації, прогресу та консультацій.</p>
+
+        @if (ViewBag.Error != null)
+        {
+            <p class="error-line">@ViewBag.Error</p>
+        }
+
+        <form method="post" action="/account/login" class="auth-form">
+            @Html.AntiForgeryToken()
+            @if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+            }
+            <div class="form-row">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="email" autocomplete="email" required />
+                <span class="error-line" asp-validation-for="Email"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="Password">Пароль</label>
+                <input asp-for="Password" type="password" autocomplete="current-password" required />
+                <span class="error-line" asp-validation-for="Password"></span>
+            </div>
+            <div class="auth-actions">
+                <button type="submit" class="btn btn-primary">Увійти</button>
+                <a href="/account/register" class="auth-switch">Немає акаунту? Зареєструватись</a>
+            </div>
+        </form>
+    </div>
+</div>
+

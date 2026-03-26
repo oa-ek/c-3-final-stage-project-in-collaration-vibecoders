@@ -1,49 +1,136 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+    var userId = Context.Session.GetInt32("UserId");
+    var userName = Context.Session.GetString("UserName");
+    var userRole = Context.Session.GetString("UserRole");
+    var isLoggedIn = userId != null;
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+    var isLanding = controller == "Home" && action == "Index";
+    var bodyClass = ViewData["BodyClass"]?.ToString() ?? "";
+    var accountInitial = !string.IsNullOrWhiteSpace(userName)
+        ? userName.Trim()[0].ToString().ToUpperInvariant()
+        : "U";
+
+    var dashboardLabel = userRole switch
+    {
+        "admin" => "Адмін-панель",
+        "specialist" => "Кабінет спеціаліста",
+        _ => "Моя реабілітація"
+    };
+
+    var dashboardUrl = userRole switch
+    {
+        "admin" => "/admin/users",
+        "specialist" => "/specialist",
+        _ => "/user"
+    };
+}
+<!DOCTYPE html>
+<html lang="uk">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CtrlZMyBody.API</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@(ViewData["Title"] ?? "CtrlZMyBody") - CtrlZMyBody</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CtrlZMyBody.API.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CtrlZMyBody.API</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+<body class="@bodyClass">
+    <div class="app-shell">
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/">
+                    <span class="brand-dot"></span>
+                    <span class="brand-text">CtrlZMyBody</span>
+                </a>
+
+                <button class="menu-toggle" type="button" data-menu-toggle aria-label="Відкрити меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+                <nav class="site-nav" data-nav>
+                    <div class="nav-item has-mega">
+                        <a href="/#why">Платформа</a>
+                        <div class="mega-panel">
+                            <div>
+                                <h4>Для кого</h4>
+                                <a href="/#profiles">Пацієнти після травм</a>
+                                <a href="/#profiles">Ветерани</a>
+                                <a href="/#profiles">Спортсмени</a>
+                            </div>
+                            <div>
+                                <h4>Основне</h4>
+                                <a href="/#rehab">План по днях</a>
+                                <a href="/#checkin">Щоденний чекін</a>
+                                <a href="/#consult">Консультації</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/#flow">Як це працює</a>
+                    <a href="/#contacts">Підтримка</a>
+                </nav>
+
+                <div class="header-actions">
+                    @if (!isLoggedIn)
+                    {
+                        <a class="btn btn-ghost" href="/account/login">Увійти</a>
+                        <a class="btn btn-primary" href="/account/register">Спробувати</a>
+                    }
+                    else
+                    {
+                        <div class="account-dropdown" data-dropdown>
+                            <button class="account-trigger" type="button" data-dropdown-trigger>
+                                <span class="account-avatar">@accountInitial</span>
+                                <span class="account-name">@userName</span>
+                            </button>
+                            <div class="account-menu" data-dropdown-menu>
+                                <a href="@dashboardUrl">@dashboardLabel</a>
+                                @if (userRole == "user")
+                                {
+                                    <a href="/user#consultations">Консультації</a>
+                                }
+                                <a href="/account/logout" class="danger-link">Вийти</a>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+        </header>
+
+        @if (TempData["Success"] != null || TempData["Error"] != null)
+        {
+            <div class="flash-wrap">
+                @if (TempData["Success"] != null)
+                {
+                    <div class="flash flash-success">@TempData["Success"]</div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div class="flash flash-error">@TempData["Error"]</div>
+                }
+            </div>
+        }
+
+        <main class="site-main @(isLanding ? "full-width" : "framed")">
             @RenderBody()
         </main>
+
+        <footer id="contacts" class="site-footer">
+            <div>
+                <strong>CtrlZMyBody</strong>
+                <p>Помічник для реабілітації після травм</p>
+            </div>
+            <div>
+                <span>Email підтримки</span>
+                <a href="mailto:support@ctrlzmybody.ua">support@ctrlzmybody.ua</a>
+            </div>
+        </footer>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - CtrlZMyBody.API - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

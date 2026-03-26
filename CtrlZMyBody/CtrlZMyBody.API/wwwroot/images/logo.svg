@@ -1,0 +1,20 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160" role="img" aria-labelledby="title desc">
+  <title id="title">CtrlZMyBody logo</title>
+  <desc id="desc">Minimal modern logo with CZ monogram and wordmark.</desc>
+
+  <defs>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="160" fill="#FFFFFF"/>
+
+  <rect x="24" y="24" width="112" height="112" rx="24" fill="#111111"/>
+  <path d="M54 68h52" stroke="url(#accent)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M54 92h52" stroke="url(#accent)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M54 116h52" stroke="#F8FAFC" stroke-width="8" stroke-linecap="round"/>
+
+  <text x="168" y="98" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="56" font-weight="700" fill="#111111" letter-spacing="0.5">CtrlZMyBody</text>
+</svg>

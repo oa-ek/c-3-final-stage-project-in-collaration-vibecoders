@@ -1,4 +1,4 @@
-using CtrlZMyBody.Core.Context;
+﻿using CtrlZMyBody.Core.Context;
 using CtrlZMyBody.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +11,7 @@ namespace CtrlZMyBody.API.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : ControllerBase
     {
+        private const string RequiredDomain = "@ctrlz.com";
         private readonly AppDbContext _db;
         public AdminController(AppDbContext db) => _db = db;
 
@@ -36,12 +37,16 @@ namespace CtrlZMyBody.API.Controllers
         [HttpPost("users")]
         public async Task<IActionResult> CreateUser([FromBody] AdminCreateUserRequest req)
         {
-            if (await _db.Users.AnyAsync(u => u.Email == req.Email))
-                return BadRequest(new { message = "Email вже існує" });
+            var normalizedEmail = NormalizeEmail(req.Email);
+            if (!normalizedEmail.EndsWith(RequiredDomain, StringComparison.Ordinal))
+                return BadRequest(new { message = $"Дозволено лише email у домені {RequiredDomain}" });
+
+            if (await _db.Users.AnyAsync(u => u.Email == normalizedEmail))
+                return BadRequest(new { message = "Email РІР¶Рµ С–СЃРЅСѓС”" });
 
             var user = new User
             {
-                Email = req.Email,
+                Email = normalizedEmail,
                 FirstName = req.FirstName,
                 LastName = req.LastName,
                 Phone = req.Phone,
@@ -83,7 +88,7 @@ namespace CtrlZMyBody.API.Controllers
             if (user == null) return NotFound();
             _db.Users.Remove(user);
             await _db.SaveChangesAsync();
-            return Ok(new { message = "Видалено" });
+            return Ok(new { message = "Р’РёРґР°Р»РµРЅРѕ" });
         }
 
         [HttpGet("exercise-categories")]
@@ -120,7 +125,7 @@ namespace CtrlZMyBody.API.Controllers
             if (item == null) return NotFound();
             _db.ExerciseCategories.Remove(item);
             await _db.SaveChangesAsync();
-            return Ok(new { message = "Видалено" });
+            return Ok(new { message = "Р’РёРґР°Р»РµРЅРѕ" });
         }
 
         [HttpGet("exercises")]
@@ -181,7 +186,7 @@ namespace CtrlZMyBody.API.Controllers
             if (item == null) return NotFound();
             _db.Exercises.Remove(item);
             await _db.SaveChangesAsync();
-            return Ok(new { message = "Видалено" });
+            return Ok(new { message = "Р’РёРґР°Р»РµРЅРѕ" });
         }
 
         [HttpGet("injury-types")]
@@ -222,7 +227,7 @@ namespace CtrlZMyBody.API.Controllers
             if (item == null) return NotFound();
             _db.InjuryTypes.Remove(item);
             await _db.SaveChangesAsync();
-            return Ok(new { message = "Видалено" });
+            return Ok(new { message = "Р’РёРґР°Р»РµРЅРѕ" });
         }
 
         [HttpGet("difficulty-levels")]
@@ -260,7 +265,7 @@ namespace CtrlZMyBody.API.Controllers
             if (item == null) return NotFound();
             _db.DifficultyLevels.Remove(item);
             await _db.SaveChangesAsync();
-            return Ok(new { message = "Видалено" });
+            return Ok(new { message = "Р’РёРґР°Р»РµРЅРѕ" });
         }
 
         [HttpGet("workout-plans")]
@@ -315,7 +320,7 @@ namespace CtrlZMyBody.API.Controllers
             if (item == null) return NotFound();
             _db.WorkoutPlans.Remove(item);
             await _db.SaveChangesAsync();
-            return Ok(new { message = "Видалено" });
+            return Ok(new { message = "Р’РёРґР°Р»РµРЅРѕ" });
         }
 
         [HttpGet("challenges")]
@@ -358,8 +363,11 @@ namespace CtrlZMyBody.API.Controllers
             if (item == null) return NotFound();
             _db.Challenges.Remove(item);
             await _db.SaveChangesAsync();
-            return Ok(new { message = "Видалено" });
+            return Ok(new { message = "Р’РёРґР°Р»РµРЅРѕ" });
         }
+
+        private static string NormalizeEmail(string email) =>
+            email.Trim().ToLowerInvariant();
     }
 
     public record AdminCreateUserRequest(

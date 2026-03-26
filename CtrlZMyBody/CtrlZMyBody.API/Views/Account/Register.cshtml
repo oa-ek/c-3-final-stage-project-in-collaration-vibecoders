@@ -1,0 +1,55 @@
+﻿@model RegisterFormModel
+@{
+    ViewData["Title"] = "Реєстрація";
+}
+
+<div class="auth-wrap">
+    <div class="auth-card">
+        <h1>Створення акаунту</h1>
+        <p>Після реєстрації ти зможеш одразу перейти в меню реабілітації.</p>
+
+        @if (ViewBag.Error != null)
+        {
+            <p class="error-line">@ViewBag.Error</p>
+        }
+
+        <form method="post" action="/account/register" class="auth-form">
+            @Html.AntiForgeryToken()
+            <div class="form-row">
+                <label asp-for="FirstName">Ім'я</label>
+                <input asp-for="FirstName" autocomplete="given-name" required />
+                <span class="error-line" asp-validation-for="FirstName"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="LastName">Прізвище</label>
+                <input asp-for="LastName" autocomplete="family-name" required />
+                <span class="error-line" asp-validation-for="LastName"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="email" autocomplete="email" required />
+                <span class="error-line" asp-validation-for="Email"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="Phone">Телефон (опціонально)</label>
+                <input asp-for="Phone" autocomplete="tel" />
+            </div>
+            <div class="form-row">
+                <label asp-for="Password">Пароль</label>
+                <input asp-for="Password" type="password" autocomplete="new-password" required />
+                <span class="error-line" asp-validation-for="Password"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="ConfirmPassword">Підтвердження пароля</label>
+                <input asp-for="ConfirmPassword" type="password" autocomplete="new-password" required />
+                <span class="error-line" asp-validation-for="ConfirmPassword"></span>
+            </div>
+
+            <div class="auth-actions">
+                <button type="submit" class="btn btn-primary">Зареєструватися</button>
+                <a href="/account/login" class="auth-switch">Вже маєш акаунт? Увійти</a>
+            </div>
+        </form>
+    </div>
+</div>
+
